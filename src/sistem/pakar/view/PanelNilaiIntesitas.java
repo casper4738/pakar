@@ -61,15 +61,15 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         table.getColumnModel().getColumn(0).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(1).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(2).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
-        table.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
-
-            @Override
-            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-                JComboBox comboBox = new JComboBox(new Object[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-                comboBox.setSelectedItem(value);
-                return comboBox;
-            }
-        });
+//        table.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
+//
+//            @Override
+//            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+//                JComboBox comboBox = new JComboBox(new Object[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
+//                comboBox.setSelectedItem(value);
+//                return comboBox;
+//            }
+//        });
         table.getColumnModel().getColumn(0).setCellEditor(
                 new DefaultCellEditor(new JComboBox(new Object[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}))
         );
@@ -386,7 +386,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
-                    int vx = 595 + i;
+                    int vx = 568 + i;
                     WeightAverage wax = new WeightAverage();
                     wax.setKode("R" + vx);
                     wax.setPredikatAturan(list1.get(i));
@@ -407,7 +407,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
-                    int vx = 676 + i;
+                    int vx = 595 + i;
                     WeightAverage wax = new WeightAverage();
                     wax.setKode("R" + vx);
                     wax.setPredikatAturan(list1.get(i));

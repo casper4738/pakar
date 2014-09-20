@@ -4,7 +4,7 @@
  */
 package sistem.pakar;
 
-import static java.lang.Double.NaN;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -1324,13 +1324,13 @@ public class NewClass {
 //        main.gejala6();
         
         
-//        DecimalFormat format = new DecimalFormat("#0000");
-//        int a1=675;
-//        int a2=a1+729;
-//        
-//        for (int i = a1; i < a2; i++) {
-//            System.out.println(format.format(i));
-//        }
+        DecimalFormat format = new DecimalFormat("#0000");
+        int a1=594;
+        int a2=a1+729;
+        
+        for (int i = a1; i < a2; i++) {
+            System.out.println(format.format(i));
+        }
 
     }
 
