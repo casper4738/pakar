@@ -145,20 +145,11 @@ public class tes {
     public static void main(String[] args) {
 
         tes tes = new tes();
-//        tes.perilaku1();
-//        tes.perilaku2();
-//        tes.perilaku3();
-//        tes.perilaku4();
-//        tes.perilaku5();
-
-        int x = 1;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                x++;
-            }
-        }
-        System.out.println("x:"+x);
-
+        tes.perilaku1();
+        tes.perilaku2();
+        tes.perilaku3();
+        tes.perilaku4();
+        tes.perilaku5();
     }
 
 }
