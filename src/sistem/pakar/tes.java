@@ -150,6 +150,8 @@ public class tes {
         tes.perilaku3();
         tes.perilaku4();
         tes.perilaku5();
+        
+        
     }
 
 }

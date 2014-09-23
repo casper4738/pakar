@@ -139,14 +139,17 @@ public class PanelGejala extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        boolean b = true;
+        int jumlah = 0;
         for (Gejala e : tableModel.getList()) {
             if(e.isSelected()) {
-                b = false;
-                break;
+                jumlah++;
             }
         }
-        if (b) {
+        
+        if(jumlah == 0) { 
+            JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
+            return;
+        } else if(jumlah <= 1) { 
             JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         }

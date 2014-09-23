@@ -422,6 +422,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
 
         panelDiagnosa.setListRule(list);
         panelDiagnosa.showPanel("card5");
+        panelDiagnosa.showMenu("menu3");
         panelDiagnosa.getPanelHasil().setHasilDiagnosa(wa);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -430,6 +431,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        panelDiagnosa.showMenu("menu3");
         panelDiagnosa.showPanel("card1");
     }//GEN-LAST:event_jButton5ActionPerformed
 

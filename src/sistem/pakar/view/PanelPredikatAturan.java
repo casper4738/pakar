@@ -130,7 +130,7 @@ public class PanelPredikatAturan extends javax.swing.JPanel {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         panelDiagnosa.showPanel("card3");
-        panelDiagnosa.showMenu("menu1");
+        panelDiagnosa.showMenu("menu3");
     }//GEN-LAST:event_jButton5ActionPerformed
 
 

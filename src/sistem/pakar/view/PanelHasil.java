@@ -4,6 +4,11 @@
  */
 package sistem.pakar.view;
 
+import java.text.DecimalFormat;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
+
 /**
  *
  * @author casper
@@ -20,39 +25,104 @@ public class PanelHasil extends javax.swing.JPanel {
         initComponents();
         this.frameMain = frameMain;
         this.panelDiagnosa = panelDiagnosa;
-
         setOpaque(false);
+        table.setRowHeight(25);
     }
 
     public void setHasilDiagnosa(double[] wa) {
-        int x = 1;
-        StringBuilder stringBuilder = new StringBuilder();
-        if (wa[0] != 0.0 && !(wa[0] + "").equals("NaN")) {
-            stringBuilder.append(x + ". ADHD  " + output(wa[0]) + "  ;  NILAI OUTPUT : " + wa[0]);
-            stringBuilder.append("\n");
-            x++;
+        Object[][] object = new Object[5][3];
+        object[0][0] = "ADHD";
+        object[0][1] = getValue(wa[0]);
+        object[0][2] = output(wa[0]);
+
+        object[1][0] = "PERKEMBANGAN BELAJAR";
+        object[1][1] = getValue(wa[1]);
+        object[1][2] = output(wa[1]);
+
+        object[2][0] = "KETERAMPILAN MOTORIK ";
+        object[2][1] = getValue(wa[2]);
+        object[2][2] = output(wa[2]);
+
+        object[3][0] = "KOMUNIKASI";
+        object[3][1] = getValue(wa[3]);
+        object[3][2] = output(wa[3]);
+
+        object[4][0] = "AUTISME";
+        object[4][1] = getValue(wa[4]);
+        object[4][2] = output(wa[4]);
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+                object,
+                new String[]{
+                    "Perilaku Abnormal", "Hasil", "Variabel"
+                }
+        ) {
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return false;
+            }
+        });
+        table.getColumnModel().getColumn(0).setPreferredWidth(250);
+        table.getColumnModel().getColumn(1).setPreferredWidth(5);
+        table.getColumnModel().getColumn(1).setPreferredWidth(10);
+
+        table.getColumnModel().getColumn(0).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.LEFT));
+        table.getColumnModel().getColumn(1).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
+        table.getColumnModel().getColumn(2).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
+
+        int x = 0;
+        for (int i = 0; i < wa.length; i++) {
+            for (int j = i; j < wa.length; j++) {
+                if (new Double(getValue(wa[x])+"") <= new Double(getValue(wa[j])+"")) {
+                    x = j;
+                }
+            }
         }
-        if (wa[1] != 0.0 && !(wa[1] + "").equals("NaN")) {
-            stringBuilder.append(x + ". PERKEMBANGAN BELAJAR   " + output(wa[1]) + "  ;  NILAI OUTPUT : " + wa[1]);
-            stringBuilder.append("\n");
-            x++;
+
+        String string = "";
+        String string2 = "";
+        for (int i = 0; i < wa.length; i++) {
+            if (wa[x] == wa[i]) {
+                string = string + object[i][0] + " dengan kategori " + object[i][2] + " ; ";
+
+                if (i == 2 || i == 3 || i == 4) {
+                    string2 = string2 + " " + Saran.saran[i][0];
+                } else {
+                    if (object[i][2].equals("RINGAN")) {
+                        string2 = string2 + object[i][0]+"\n " + Saran.saran[i][0]+"\n\n\n";
+                    } else if (object[i][2].equals("SEDANG")) {
+                        string2 = string2 + object[i][0]+"\n " + Saran.saran[i][1]+"\n\n\n";
+                    } else if (object[i][2].equals("BERAT")) {
+                        string2 = string2 + object[i][0]+"\n " + Saran.saran[i][2]+"\n\n\n";
+                    }
+                }
+            }
         }
-        if (wa[2] != 0.0 && !(wa[2] + "").equals("NaN")) {
-            stringBuilder.append(x + ". KETERAMPILAN MOTORIK  " + output(wa[2]) + "  ;  NILAI OUTPUT : " + wa[2]);
-            stringBuilder.append("\n");
-            x++;
+
+        String[] vstring = string.split("; ");
+        string = "";
+        for (int i = 0; i < vstring.length; i++) {
+            if (i == vstring.length - 1) {
+                string = string + vstring[i] + " ";
+            } else if (i == vstring.length - 2) {
+                string = string + vstring[i] + " dan ";
+            } else {
+                string = string + vstring[i] + ", ";
+            }
         }
-        if (wa[3] != 0.0 && !(wa[3] + "").equals("NaN")) {
-            stringBuilder.append(x + ". KOMUNIKASI  " + output(wa[3]) + "  ;  NILAI OUTPUT : " + wa[3]);
-            stringBuilder.append("\n");
-            x++;
+
+        jTextArea1.setText("Berdasarkan hasil diagnosa dapat disimpulkan bahwa anak "
+                + "memiliki gangguan " + string + "");
+        jTextArea2.setText(string2);
+    }
+
+    private Object getValue(double x) {
+        if ((x + "").equals("NaN")) {
+            return 0;
+        } else {
+            DecimalFormat format = new DecimalFormat("#0.000");
+            return format.format(x);
         }
-        if (wa[4] != 0.0 && !(wa[4] + "").equals("NaN")) {
-            stringBuilder.append(x + ". AUTISME  " + output(wa[4]) + "  ;  NILAI OUTPUT : " + wa[4]);
-            stringBuilder.append("\n");
-            x++;
-        }
-        jTextArea1.setText(stringBuilder.toString());
     }
 
     private String output(double x) {
@@ -63,7 +133,7 @@ public class PanelHasil extends javax.swing.JPanel {
         } else if (x > 6.5 && x <= 10) {
             return "BERAT";
         } else {
-            return "ERROR";
+            return "";
         }
     }
 
@@ -81,11 +151,14 @@ public class PanelHasil extends javax.swing.JPanel {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextArea2 = new javax.swing.JTextArea();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         iPanelBorder2 = new sistem.pakar.component.IPanelBorder();
+        jButton5 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
@@ -103,14 +176,6 @@ public class PanelHasil extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("SARAN / TINDAKAN");
 
-        jTextArea1.setEditable(false);
-        jTextArea1.setColumns(20);
-        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
-        jTextArea1.setLineWrap(true);
-        jTextArea1.setRows(5);
-        jTextArea1.setWrapStyleWord(true);
-        jScrollPane1.setViewportView(jTextArea1);
-
         jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
@@ -118,6 +183,39 @@ public class PanelHasil extends javax.swing.JPanel {
         jTextArea2.setRows(5);
         jTextArea2.setWrapStyleWord(true);
         jScrollPane2.setViewportView(jTextArea2);
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, true, true
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane3.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setPreferredWidth(200);
+            table.getColumnModel().getColumn(1).setPreferredWidth(25);
+        }
+
+        jTextArea1.setEditable(false);
+        jTextArea1.setColumns(20);
+        jTextArea1.setFont(new java.awt.Font("Tahoma", 0, 11)); // NOI18N
+        jTextArea1.setLineWrap(true);
+        jTextArea1.setRows(5);
+        jTextArea1.setWrapStyleWord(true);
+        jScrollPane4.setViewportView(jTextArea1);
 
         javax.swing.GroupLayout iPanelBorder1Layout = new javax.swing.GroupLayout(iPanelBorder1);
         iPanelBorder1.setLayout(iPanelBorder1Layout);
@@ -127,14 +225,15 @@ public class PanelHasil extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(iPanelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 613, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane3)
                     .addGroup(iPanelBorder1Layout.createSequentialGroup()
                         .addGroup(iPanelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4))
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING))
+                    .addComponent(jScrollPane4))
                 .addContainerGap())
         );
         iPanelBorder1Layout.setVerticalGroup(
@@ -144,16 +243,28 @@ public class PanelHasil extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addGap(48, 48, 48)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 66, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 107, Short.MAX_VALUE)
                 .addContainerGap())
         );
+
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/stock_print.png"))); // NOI18N
+        jButton5.setText("Print");
+        jButton5.setPreferredSize(new java.awt.Dimension(120, 35));
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
+        iPanelBorder2.add(jButton5);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/process.png"))); // NOI18N
         jButton3.setText("Tampilkan Proses");
@@ -194,6 +305,7 @@ public class PanelHasil extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         panelDiagnosa.showPanel("card3");
+        panelDiagnosa.showMenu("menu3");
         panelDiagnosa.getPanelNilaiDerajatKeanggotaan().setData();
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -201,24 +313,29 @@ public class PanelHasil extends javax.swing.JPanel {
         frameMain.setPanel(new PanelMain(frameMain));
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        panelDiagnosa.showPanel("card7");
+        panelDiagnosa.showMenu("menu3");
+    }//GEN-LAST:event_jButton5ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sistem.pakar.component.IPanelBorder iPanelBorder1;
     private sistem.pakar.component.IPanelBorder iPanelBorder2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextArea jTextArea2;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
-
-    private String hasilDiagnosa;
-    private String saran;
 
     public String getHasilDiagnosa() {
         return jTextArea1.getText();
@@ -227,5 +344,9 @@ public class PanelHasil extends javax.swing.JPanel {
     public String getSaran() {
         return jTextArea2.getText();
     }
-    
+
+    public JTable getTable() {
+        return table;
+    }
+
 }

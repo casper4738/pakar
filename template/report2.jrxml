@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2a8c6b3-92f6-4f1b-ab2e-06c6e30486b7">
 	<property name="ireport.zoom" value="0.9090909090909097"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="148"/>
+	<property name="ireport.y" value="854"/>
 	<parameter name="parameter1" class="java.lang.String"/>
 	<parameter name="parameter2" class="java.lang.String"/>
 	<parameter name="parameter3" class="java.lang.String"/>
@@ -21,11 +21,12 @@
 	<parameter name="parameter16" class="java.lang.String"/>
 	<parameter name="parameter17" class="java.lang.String"/>
 	<parameter name="parameter18" class="java.lang.String"/>
+	<parameter name="parameter19" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="482" splitType="Stretch">
+		<band height="664" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="c409eb39-ebb6-47b3-841e-db0369209143" x="11" y="0" width="532" height="19"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -269,25 +270,30 @@
 				<textElement/>
 				<textFieldExpression><![CDATA[$P{parameter17}]]></textFieldExpression>
 			</textField>
-		</band>
-	</title>
-	<detail>
-		<band height="222">
 			<textField>
-				<reportElement uuid="4e1283b3-31b4-444b-939b-3c1d1bed2b6f" x="33" y="31" width="476" height="175"/>
+				<reportElement uuid="4e1283b3-31b4-444b-939b-3c1d1bed2b6f" x="33" y="515" width="476" height="149"/>
 				<textElement textAlignment="Justified" markup="none"/>
 				<textFieldExpression><![CDATA[$P{parameter18}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="e3d8d5c6-b217-464d-a62b-97fb76cb0dd4" x="33" y="11" width="476" height="20"/>
+				<reportElement uuid="e3d8d5c6-b217-464d-a62b-97fb76cb0dd4" x="33" y="495" width="476" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Saran/Tindakan:]]></text>
 			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="802">
 			<line>
-				<reportElement uuid="3a0a7898-de83-4624-9368-9269de5bb80e" x="22" y="206" width="533" height="2" forecolor="#CC0000"/>
+				<reportElement uuid="3a0a7898-de83-4624-9368-9269de5bb80e" x="13" y="786" width="533" height="2" forecolor="#CC0000"/>
 			</line>
+			<textField>
+				<reportElement uuid="4e1283b3-31b4-444b-939b-3c1d1bed2b6f" x="33" y="11" width="476" height="765"/>
+				<textElement textAlignment="Justified" markup="none"/>
+				<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+			</textField>
 		</band>
 	</detail>
 </jasperReport>

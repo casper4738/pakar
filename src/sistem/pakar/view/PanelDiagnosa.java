@@ -26,6 +26,7 @@ public class PanelDiagnosa extends javax.swing.JPanel {
     private PanelHasil panelHasil;
     private PanelPerilaku panelPerilaku;
     private PanelPasien panelPasien;
+    private PanelBantuan panelBantuan;
 
     List<WeightAverage> listRule;
 
@@ -42,6 +43,7 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         panelHasil = new PanelHasil(frameMain, this);
         panelPerilaku = new PanelPerilaku(frameMain);
         panelPasien = new PanelPasien(frameMain, this);
+        panelBantuan = new PanelBantuan(frameMain, this);
 
         panelNilaiIntesitas.setOpaque(false);
         panelGejala.setOpaque(false);
@@ -50,6 +52,7 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         panelHasil.setOpaque(false);
         panelPerilaku.setOpaque(false);
         panelPasien.setOpaque(false);
+        panelBantuan.setOpaque(false);
 
         jPanel3.add(panelGejala, "card1");
         jPanel3.add(panelNilaiIntesitas, "card2");
@@ -58,6 +61,7 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         jPanel3.add(panelHasil, "card5");
         jPanel3.add(panelPerilaku, "card6");
         jPanel3.add(panelPasien, "card7");
+        jPanel3.add(panelBantuan, "card8");
     }
 
     public void showPanel(String panel) {
@@ -92,7 +96,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         buttonMenuUtama2 = new sistem.pakar.component.IButton();
         buttonPerilaku1 = new sistem.pakar.component.IButton();
-        buttonBantuan1 = new sistem.pakar.component.IButton();
 
         setLayout(new java.awt.BorderLayout());
 
@@ -140,7 +143,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         buttonPerilaku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/people-1.png"))); // NOI18N
         buttonPerilaku.setText("Perilaku Abnormal");
         buttonPerilaku.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonPerilaku.setPreferredSize(new java.awt.Dimension(173, 41));
         buttonPerilaku.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/people-2.png"))); // NOI18N
         buttonPerilaku.setRoundRect(true);
         buttonPerilaku.addActionListener(new java.awt.event.ActionListener() {
@@ -156,6 +158,11 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         buttonBantuan.setPreferredSize(new java.awt.Dimension(173, 41));
         buttonBantuan.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/help-2.png"))); // NOI18N
         buttonBantuan.setRoundRect(true);
+        buttonBantuan.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonBantuanActionPerformed(evt);
+            }
+        });
         jPanel1.add(buttonBantuan);
 
         panelMenu.add(jPanel1, "menu1");
@@ -205,14 +212,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         });
         jPanel4.add(buttonPerilaku1);
 
-        buttonBantuan1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/help-1.png"))); // NOI18N
-        buttonBantuan1.setText("Bantuan");
-        buttonBantuan1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonBantuan1.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonBantuan1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/help-2.png"))); // NOI18N
-        buttonBantuan1.setRoundRect(true);
-        jPanel4.add(buttonBantuan1);
-
         panelMenu.add(jPanel4, "menu3");
 
         javax.swing.GroupLayout iPanel1Layout = new javax.swing.GroupLayout(iPanel1);
@@ -249,9 +248,11 @@ public class PanelDiagnosa extends javax.swing.JPanel {
                     .addGroup(iPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 196, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 256, Short.MAX_VALUE))
+                    .addGroup(iPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())))
         );
 
         add(iPanel1, java.awt.BorderLayout.CENTER);
@@ -279,10 +280,14 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         showMenu("menu3");
     }//GEN-LAST:event_buttonPerilaku1ActionPerformed
 
+    private void buttonBantuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBantuanActionPerformed
+        showPanel("card8");
+        showMenu("menu2");
+    }//GEN-LAST:event_buttonBantuanActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sistem.pakar.component.IButton buttonBantuan;
-    private sistem.pakar.component.IButton buttonBantuan1;
     private sistem.pakar.component.IButton buttonMenuUtama;
     private sistem.pakar.component.IButton buttonMenuUtama1;
     private sistem.pakar.component.IButton buttonMenuUtama2;
