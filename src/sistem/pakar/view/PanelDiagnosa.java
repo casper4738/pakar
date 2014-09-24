@@ -7,6 +7,7 @@ package sistem.pakar.view;
 import java.awt.CardLayout;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JTabbedPane;
 import sistem.pakar.sugeno.WeightAverage;
 
 /**
@@ -21,7 +22,10 @@ public class PanelDiagnosa extends javax.swing.JPanel {
     private FrameMain frameMain;
     private PanelNilaiIntesitas panelNilaiIntesitas;
     private PanelGejala panelGejala;
-    private PanelNilaiDerajatKeanggotaan panelNilaiDerajatKeanggotaan;
+    private PanelFuzzyfikasi panelFuzzyfikazi;
+    private PanelInferensi panelInferensi;
+    private PanelDeffuzyfikasi panelDeffuzyfikasi;
+
     private PanelPredikatAturan panelPredikatAturan;
     private PanelHasil panelHasil;
     private PanelPerilaku panelPerilaku;
@@ -34,34 +38,43 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         initComponents();
         this.frameMain = frameMain;
 
+        tabbedPane = new JTabbedPane();
+
         listRule = new ArrayList<>();
 
-        panelNilaiIntesitas = new PanelNilaiIntesitas(frameMain, this);
         panelGejala = new PanelGejala(frameMain, this);
-        panelNilaiDerajatKeanggotaan = new PanelNilaiDerajatKeanggotaan(frameMain, this);
-        panelPredikatAturan = new PanelPredikatAturan(frameMain, this);
+        panelNilaiIntesitas = new PanelNilaiIntesitas(frameMain, this);
+        panelFuzzyfikazi = new PanelFuzzyfikasi(frameMain, this);
+        panelInferensi = new PanelInferensi(frameMain, this);
+        panelDeffuzyfikasi = new PanelDeffuzyfikasi(frameMain, this);
         panelHasil = new PanelHasil(frameMain, this);
+        
+        panelPredikatAturan = new PanelPredikatAturan(frameMain, this);
         panelPerilaku = new PanelPerilaku(frameMain);
         panelPasien = new PanelPasien(frameMain, this);
         panelBantuan = new PanelBantuan(frameMain, this);
 
         panelNilaiIntesitas.setOpaque(false);
         panelGejala.setOpaque(false);
-        panelNilaiDerajatKeanggotaan.setOpaque(false);
+        panelFuzzyfikazi.setOpaque(false);
         panelPredikatAturan.setOpaque(false);
         panelHasil.setOpaque(false);
         panelPerilaku.setOpaque(false);
         panelPasien.setOpaque(false);
         panelBantuan.setOpaque(false);
+        panelInferensi.setOpaque(false);
+
+        tabbedPane.addTab("TABEL FUZZYFIKASI", panelFuzzyfikazi);
+        tabbedPane.addTab("TABEL INFERENSI", panelInferensi);
+        tabbedPane.addTab("TABEL DEFFUZIKAZY", panelDeffuzyfikasi);
+
+        tabbedPane.setOpaque(false);
 
         jPanel3.add(panelGejala, "card1");
         jPanel3.add(panelNilaiIntesitas, "card2");
-        jPanel3.add(panelNilaiDerajatKeanggotaan, "card3");
-        jPanel3.add(panelPredikatAturan, "card4");
-        jPanel3.add(panelHasil, "card5");
-        jPanel3.add(panelPerilaku, "card6");
-        jPanel3.add(panelPasien, "card7");
-        jPanel3.add(panelBantuan, "card8");
+        jPanel3.add(tabbedPane, "card3");
+        jPanel3.add(panelHasil, "card4");
+        jPanel3.add(panelPasien, "card5");
     }
 
     public void showPanel(String panel) {
@@ -82,7 +95,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
     private void initComponents() {
 
         iPanel1 = new sistem.pakar.component.IPanel();
-        iPanel3 = new sistem.pakar.component.IPanel();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel8 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -95,25 +107,13 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         buttonMenuUtama1 = new sistem.pakar.component.IButton();
         jPanel4 = new javax.swing.JPanel();
         buttonMenuUtama2 = new sistem.pakar.component.IButton();
-        buttonPerilaku1 = new sistem.pakar.component.IButton();
+        jPanel5 = new javax.swing.JPanel();
+        buttonMenuUtama3 = new sistem.pakar.component.IButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setLayout(new java.awt.BorderLayout());
 
         iPanel1.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/bg-1.jpg"))); // NOI18N
-
-        iPanel3.setBackgroundImage(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/BANNER.png"))); // NOI18N
-        iPanel3.setOpaque(false);
-
-        javax.swing.GroupLayout iPanel3Layout = new javax.swing.GroupLayout(iPanel3);
-        iPanel3.setLayout(iPanel3Layout);
-        iPanel3Layout.setHorizontalGroup(
-            iPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 668, Short.MAX_VALUE)
-        );
-        iPanel3Layout.setVerticalGroup(
-            iPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 110, Short.MAX_VALUE)
-        );
 
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 1, 24)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -199,20 +199,28 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         });
         jPanel4.add(buttonMenuUtama2);
 
-        buttonPerilaku1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/save-1.png"))); // NOI18N
-        buttonPerilaku1.setText("Print Laporan");
-        buttonPerilaku1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonPerilaku1.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonPerilaku1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/save-2.png"))); // NOI18N
-        buttonPerilaku1.setRoundRect(true);
-        buttonPerilaku1.addActionListener(new java.awt.event.ActionListener() {
+        panelMenu.add(jPanel4, "menu3");
+
+        jPanel5.setOpaque(false);
+
+        buttonMenuUtama3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
+        buttonMenuUtama3.setText("Kembali");
+        buttonMenuUtama3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonMenuUtama3.setPreferredSize(new java.awt.Dimension(173, 41));
+        buttonMenuUtama3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
+        buttonMenuUtama3.setRoundRect(true);
+        buttonMenuUtama3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPerilaku1ActionPerformed(evt);
+                buttonMenuUtama3ActionPerformed(evt);
             }
         });
-        jPanel4.add(buttonPerilaku1);
+        jPanel5.add(buttonMenuUtama3);
 
-        panelMenu.add(jPanel4, "menu3");
+        panelMenu.add(jPanel5, "menu4");
+
+        jLabel1.setFont(new java.awt.Font("Bookman Old Style", 1, 24)); // NOI18N
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("<html><center>SISTEM PAKAR<br>\nDIAGNOSA PERILAKU ABNORMAL PERKEMBANGAN ANAK</center></html>");
 
         javax.swing.GroupLayout iPanel1Layout = new javax.swing.GroupLayout(iPanel1);
         iPanel1.setLayout(iPanel1Layout);
@@ -222,25 +230,23 @@ public class PanelDiagnosa extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(iPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(iPanel1Layout.createSequentialGroup()
-                        .addComponent(jSeparator1)
-                        .addGap(10, 10, 10))
-                    .addGroup(iPanel1Layout.createSequentialGroup()
                         .addGroup(iPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
                             .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
-            .addGroup(iPanel1Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(iPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, iPanel1Layout.createSequentialGroup()
+                        .addGroup(iPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 812, Short.MAX_VALUE)
+                            .addComponent(jSeparator1))
+                        .addGap(10, 10, 10))))
         );
         iPanel1Layout.setVerticalGroup(
             iPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(iPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(iPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -249,7 +255,7 @@ public class PanelDiagnosa extends javax.swing.JPanel {
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(panelMenu, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 256, Short.MAX_VALUE))
+                        .addGap(0, 321, Short.MAX_VALUE))
                     .addGroup(iPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())))
@@ -268,22 +274,22 @@ public class PanelDiagnosa extends javax.swing.JPanel {
     }//GEN-LAST:event_buttonPerilakuActionPerformed
 
     private void buttonMenuUtama1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama1ActionPerformed
-        frameMain.setPanel(new PanelMain(frameMain));
+       frameMain.setPanel(new PanelMain(frameMain));
     }//GEN-LAST:event_buttonMenuUtama1ActionPerformed
 
     private void buttonMenuUtama2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama2ActionPerformed
         buttonMenuUtama1ActionPerformed(evt);
     }//GEN-LAST:event_buttonMenuUtama2ActionPerformed
 
-    private void buttonPerilaku1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerilaku1ActionPerformed
-        showPanel("card7");
-        showMenu("menu3");
-    }//GEN-LAST:event_buttonPerilaku1ActionPerformed
-
     private void buttonBantuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBantuanActionPerformed
         showPanel("card8");
         showMenu("menu2");
     }//GEN-LAST:event_buttonBantuanActionPerformed
+
+    private void buttonMenuUtama3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama3ActionPerformed
+        showPanel("card4");
+        showMenu("menu3");
+    }//GEN-LAST:event_buttonMenuUtama3ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -291,18 +297,20 @@ public class PanelDiagnosa extends javax.swing.JPanel {
     private sistem.pakar.component.IButton buttonMenuUtama;
     private sistem.pakar.component.IButton buttonMenuUtama1;
     private sistem.pakar.component.IButton buttonMenuUtama2;
+    private sistem.pakar.component.IButton buttonMenuUtama3;
     private sistem.pakar.component.IButton buttonPerilaku;
-    private sistem.pakar.component.IButton buttonPerilaku1;
     private sistem.pakar.component.IPanel iPanel1;
-    private sistem.pakar.component.IPanel iPanel3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelMenu;
     // End of variables declaration//GEN-END:variables
+    private JTabbedPane tabbedPane;
 
     public PanelNilaiIntesitas getPanelNilaiIntesitas() {
         return panelNilaiIntesitas;
@@ -312,8 +320,8 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         return panelGejala;
     }
 
-    public PanelNilaiDerajatKeanggotaan getPanelNilaiDerajatKeanggotaan() {
-        return panelNilaiDerajatKeanggotaan;
+    public PanelFuzzyfikasi getPanelFuzzyfikazi() {
+        return panelFuzzyfikazi;
     }
 
     public PanelPredikatAturan getPanelPredikatAturan() {
@@ -330,6 +338,14 @@ public class PanelDiagnosa extends javax.swing.JPanel {
 
     public void setListRule(List<WeightAverage> listRule) {
         this.listRule = listRule;
+    }
+
+    public PanelInferensi getPanelInferensi() {
+        return panelInferensi;
+    }
+
+    public PanelDeffuzyfikasi getPanelDeffuzyfikasi() {
+        return panelDeffuzyfikasi;
     }
 
 }

@@ -12,6 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
+import sistem.pakar.Perilaku;
 import sistem.pakar.component.TableModelIntensitas;
 import sistem.pakar.sugeno.Defuzzyfikasi;
 import sistem.pakar.sugeno.DerajatKeanggotaan;
@@ -60,7 +61,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
 
         table.getColumnModel().getColumn(0).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(1).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
-        table.getColumnModel().getColumn(2).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
+        table.getColumnModel().getColumn(2).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.LEFT));
 //        table.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
 //
 //            @Override
@@ -122,7 +123,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         jPanel2.add(jButton3);
 
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
-        jButton4.setText("Batal");
+        jButton4.setText("Reset");
         jButton4.setPreferredSize(new java.awt.Dimension(120, 35));
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -306,7 +307,15 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         rule.setListGejalaBool4(listBool4);
         rule.setListGejalaBool5(listBool5);
 
+        Perilaku perilaku = new Perilaku();
+        perilaku.perilaku1();
+        perilaku.perilaku2();
+        perilaku.perilaku3();
+        perilaku.perilaku4();
+        perilaku.perilaku5();
+        
         List<WeightAverage> list = new ArrayList<>();
+        List<WeightAverage> vlist = perilaku.getList();
 
         double[] wa = new double[5];
         Defuzzyfikasi d = new Defuzzyfikasi();
@@ -322,11 +331,9 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
                     int vx = 1 + i;
-                    WeightAverage wax = new WeightAverage();
-                    wax.setKode("R" + vx);
+                    WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
-                    wax.setRule("RULE " + vx);
                     list.add(wax);
                 }
             }
@@ -344,11 +351,9 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
                     int vx = 244 + i;
-                    WeightAverage wax = new WeightAverage();
-                    wax.setKode("R" + vx);
+                    WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
-                    wax.setRule("RULE " + vx);
                     list.add(wax);
                 }
             }
@@ -361,15 +366,13 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[2] = d.getWeightAverage();
-            
+
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
                     int vx = 487 + i;
-                    WeightAverage wax = new WeightAverage();
-                    wax.setKode("R" + vx);
+                    WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
-                    wax.setRule("RULE " + vx);
                     list.add(wax);
                 }
             }
@@ -383,15 +386,13 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[3] = d.getWeightAverage();
-            
+
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
                     int vx = 568 + i;
-                    WeightAverage wax = new WeightAverage();
-                    wax.setKode("R" + vx);
+                    WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
-                    wax.setRule("RULE " + vx);
                     list.add(wax);
                 }
             }
@@ -404,34 +405,39 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[4] = d.getWeightAverage();
-            
+
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
                     int vx = 595 + i;
-                    WeightAverage wax = new WeightAverage();
-                    wax.setKode("R" + vx);
+                    WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
-                    wax.setRule("RULE " + vx);
                     list.add(wax);
                 }
             }
-            
+
         } catch (Exception e) {
         }
 
         panelDiagnosa.setListRule(list);
-        panelDiagnosa.showPanel("card5");
+        panelDiagnosa.showPanel("card4");
         panelDiagnosa.showMenu("menu3");
+        panelDiagnosa.getPanelFuzzyfikazi().setData();
+        panelDiagnosa.getPanelInferensi().setData();
+        panelDiagnosa.getPanelDeffuzyfikasi().setData(wa);
         panelDiagnosa.getPanelHasil().setHasilDiagnosa(wa);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        frameMain.setPanel(new PanelMain(frameMain));
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            Gejala e = tableModel.get(i);
+            e.setSelected(false);
+            tableModel.update(i, e);
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        panelDiagnosa.showMenu("menu3");
+        panelDiagnosa.showMenu("menu1");
         panelDiagnosa.showPanel("card1");
     }//GEN-LAST:event_jButton5ActionPerformed
 

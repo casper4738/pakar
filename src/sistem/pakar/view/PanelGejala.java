@@ -104,7 +104,7 @@ public class PanelGejala extends javax.swing.JPanel {
         jPanel1.add(jButton2);
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
-        jButton1.setText("Batal");
+        jButton1.setText("Reset");
         jButton1.setPreferredSize(new java.awt.Dimension(120, 35));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -158,7 +158,11 @@ public class PanelGejala extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        frameMain.setPanel(new PanelMain(frameMain));
+        for (int i = 0; i < tableModel.getRowCount(); i++) {
+            Gejala e = tableModel.get(i);
+            e.setSelected(false);
+            tableModel.update(i, e);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
 

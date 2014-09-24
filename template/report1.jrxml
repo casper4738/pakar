@@ -2,7 +2,7 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report1" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="b2a8c6b3-92f6-4f1b-ab2e-06c6e30486b7">
 	<property name="ireport.zoom" value="0.9090909090909097"/>
 	<property name="ireport.x" value="0"/>
-	<property name="ireport.y" value="148"/>
+	<property name="ireport.y" value="192"/>
 	<parameter name="parameter1" class="java.lang.String"/>
 	<parameter name="parameter2" class="java.lang.String"/>
 	<parameter name="parameter3" class="java.lang.String"/>
@@ -21,11 +21,17 @@
 	<parameter name="parameter16" class="java.lang.String"/>
 	<parameter name="parameter17" class="java.lang.String"/>
 	<parameter name="parameter18" class="java.lang.String"/>
+	<parameter name="parameter19" class="java.lang.String"/>
+	<parameter name="parameter20" class="java.lang.String"/>
+	<parameter name="parameter21" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="482" splitType="Stretch">
+		<band height="707" splitType="Stretch">
 			<staticText>
 				<reportElement uuid="c409eb39-ebb6-47b3-841e-db0369209143" x="11" y="0" width="532" height="19"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -139,29 +145,25 @@
 				<textElement/>
 				<textFieldExpression><![CDATA[$P{parameter6} +" TAHUN "]]></textFieldExpression>
 			</textField>
-			<line>
-				<reportElement uuid="3a0a7898-de83-4624-9368-9269de5bb80e" x="13" y="257" width="533" height="2" forecolor="#CC0000"/>
-			</line>
 			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="279" width="300" height="20"/>
-				<box>
-					<topPen lineWidth="1.5"/>
-					<bottomPen lineWidth="1.5"/>
-				</box>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="545" width="300" height="20"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Gangguan Perkembangan Belajar]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="585" width="88" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Nama Gangguan]]></text>
+				<textFieldExpression><![CDATA[$P{parameter15}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="585" width="300" height="20"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Gangguan Motorik]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="333" y="279" width="88" height="20"/>
-				<box>
-					<topPen lineWidth="1.5"/>
-					<bottomPen lineWidth="1.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<text><![CDATA[Hasil]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="421" y="279" width="88" height="20"/>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="421" y="505" width="88" height="20"/>
 				<box>
 					<topPen lineWidth="1.5"/>
 					<bottomPen lineWidth="1.5"/>
@@ -170,59 +172,16 @@
 				<text><![CDATA[Variabel]]></text>
 			</staticText>
 			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="299" width="300" height="20"/>
-				<box leftPadding="5"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[ADHD]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="319" width="300" height="20"/>
-				<box leftPadding="5"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Gangguan Perkembangan Belajar]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="339" width="300" height="20"/>
-				<box leftPadding="5"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Gangguan Komunikasi]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="359" width="300" height="20"/>
-				<box leftPadding="5"/>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Gangguan Motorik]]></text>
-			</staticText>
-			<staticText>
-				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="379" width="300" height="20"/>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="505" width="300" height="20"/>
 				<box>
+					<topPen lineWidth="1.5"/>
 					<bottomPen lineWidth="1.5"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[  Gangguan Autisme]]></text>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Nama Gangguan]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="299" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="319" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter8}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="339" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter9}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="359" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter10}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="379" width="88" height="20"/>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="605" width="88" height="20"/>
 				<box>
 					<bottomPen lineWidth="1.5"/>
 				</box>
@@ -230,44 +189,131 @@
 				<textFieldExpression><![CDATA[$P{parameter11}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="299" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter12}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="319" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter13}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="339" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter14}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="359" width="88" height="20"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter15}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="379" width="88" height="20"/>
-				<box>
-					<bottomPen lineWidth="1.5"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression><![CDATA[$P{parameter16}]]></textFieldExpression>
+				<reportElement uuid="4e1283b3-31b4-444b-939b-3c1d1bed2b6f" x="33" y="655" width="476" height="52"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{parameter17}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement uuid="e3d8d5c6-b217-464d-a62b-97fb76cb0dd4" x="33" y="409" width="476" height="20"/>
+				<reportElement uuid="e3d8d5c6-b217-464d-a62b-97fb76cb0dd4" x="33" y="635" width="476" height="20"/>
 				<textElement>
 					<font isBold="true"/>
 				</textElement>
 				<text><![CDATA[Kesimpulan]]></text>
 			</staticText>
 			<textField>
-				<reportElement uuid="4e1283b3-31b4-444b-939b-3c1d1bed2b6f" x="33" y="429" width="476" height="52"/>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="585" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter10}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="565" width="300" height="20"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Gangguan Komunikasi]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="605" width="300" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[  Gangguan Autisme]]></text>
+			</staticText>
+			<line>
+				<reportElement uuid="3a0a7898-de83-4624-9368-9269de5bb80e" x="13" y="257" width="533" height="2" forecolor="#CC0000"/>
+			</line>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="565" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter14}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="333" y="505" width="88" height="20"/>
+				<box>
+					<topPen lineWidth="1.5"/>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[Hasil]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="525" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter12}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="545" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter13}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="565" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter9}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="545" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter8}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="05650129-cc85-4439-9ca4-b57a8fbda4ae" x="33" y="525" width="300" height="20"/>
+				<box leftPadding="5"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ADHD]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="333" y="525" width="88" height="20"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="514fe927-86c8-4536-a4d2-5b07bb9e0c7c" x="421" y="605" width="88" height="20"/>
+				<box>
+					<bottomPen lineWidth="1.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$P{parameter16}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06054d01-26cc-457a-a95d-c667af0e0391" x="0" y="291" width="100" height="20"/>
 				<textElement/>
-				<textFieldExpression><![CDATA[$P{parameter17}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement uuid="ec796c2f-9b97-47b8-9c52-8b881de16150" x="0" y="271" width="476" height="20"/>
+				<textElement/>
+				<text><![CDATA[Gejala yang Diderita Anak ::]]></text>
+			</staticText>
+			<textField>
+				<reportElement uuid="06054d01-26cc-457a-a95d-c667af0e0391" x="0" y="311" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06054d01-26cc-457a-a95d-c667af0e0391" x="0" y="331" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06054d01-26cc-457a-a95d-c667af0e0391" x="0" y="351" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06054d01-26cc-457a-a95d-c667af0e0391" x="0" y="371" width="212" height="33"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[Kurangnya perilaku nonverbal seperti kontak mata, bahasa tubuh dan ekspresi wajah]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06054d01-26cc-457a-a95d-c667af0e0391" x="212" y="291" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$P{parameter19}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="06054d01-26cc-457a-a95d-c667af0e0391" x="212" y="371" width="212" height="33"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[Kurangnya perilaku nonverbal seperti kontak mata, bahasa tubuh dan ekspresi wajah]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>

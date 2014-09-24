@@ -298,7 +298,7 @@ public class PanelPasien extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        panelDiagnosa.showPanel("card5");
+        panelDiagnosa.showPanel("card4");
         panelDiagnosa.showMenu("menu3");
     }//GEN-LAST:event_jButton6ActionPerformed
 

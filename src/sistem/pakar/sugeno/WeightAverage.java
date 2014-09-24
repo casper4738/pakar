@@ -2,7 +2,6 @@
  * Netbeans 8.0 
  * JDK 1.7  
  */
-
 package sistem.pakar.sugeno;
 
 /**
@@ -10,13 +9,22 @@ package sistem.pakar.sugeno;
  * @author casper
  */
 public class WeightAverage {
-    
+
     private String kode;
     private String rule;
+    private String then;
     private double predikatAturan;
     private double nilaiOutput;
 
     public WeightAverage() {
+    }
+
+    public WeightAverage(String kode, String rule, String then, double predikatAturan, double nilaiOutput) {
+        this.kode = kode;
+        this.rule = rule;
+        this.then = then;
+        this.predikatAturan = predikatAturan;
+        this.nilaiOutput = nilaiOutput;
     }
 
     public String getKode() {
@@ -35,6 +43,14 @@ public class WeightAverage {
         this.rule = rule;
     }
 
+    public String getThen() {
+        return then;
+    }
+
+    public void setThen(String then) {
+        this.then = then;
+    }
+
     public double getPredikatAturan() {
         return predikatAturan;
     }
@@ -50,5 +66,5 @@ public class WeightAverage {
     public void setNilaiOutput(double nilaiOutput) {
         this.nilaiOutput = nilaiOutput;
     }
-    
+
 }

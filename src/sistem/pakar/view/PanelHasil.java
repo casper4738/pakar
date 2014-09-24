@@ -305,8 +305,8 @@ public class PanelHasil extends javax.swing.JPanel {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         panelDiagnosa.showPanel("card3");
-        panelDiagnosa.showMenu("menu3");
-        panelDiagnosa.getPanelNilaiDerajatKeanggotaan().setData();
+        panelDiagnosa.showMenu("menu4");
+        panelDiagnosa.getPanelFuzzyfikazi().setData();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -314,7 +314,7 @@ public class PanelHasil extends javax.swing.JPanel {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        panelDiagnosa.showPanel("card7");
+        panelDiagnosa.showPanel("card5");
         panelDiagnosa.showMenu("menu3");
     }//GEN-LAST:event_jButton5ActionPerformed
 

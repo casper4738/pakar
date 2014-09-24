@@ -1275,7 +1275,7 @@ public class NewClass {
                 string = string + vstring[i] + ", ";
             }
         }
-
+        
         System.out.println("x:" + tks[x]);
         System.out.println("x:" + string);
 
