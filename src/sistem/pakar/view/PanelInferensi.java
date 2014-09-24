@@ -49,10 +49,6 @@ public class PanelInferensi extends javax.swing.JPanel {
         });
         tableModel.setList(list);
 
-        System.out.println("=====================");
-        System.out.println(list.size());
-        System.out.println("=====================");
-
         table.setModel(tableModel);
         table.setRowSorter(tableModel.getSorter());
 

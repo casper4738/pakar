@@ -75,6 +75,7 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         jPanel3.add(tabbedPane, "card3");
         jPanel3.add(panelHasil, "card4");
         jPanel3.add(panelPasien, "card5");
+        jPanel3.add(panelPerilaku, "card6");
     }
 
     public void showPanel(String panel) {

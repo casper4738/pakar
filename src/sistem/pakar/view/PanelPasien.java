@@ -6,9 +6,11 @@ package sistem.pakar.view;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import sistem.pakar.sugeno.Gejala;
 import swingx.utility.FilterInput;
 import swingx.utility.UtilityPrint;
 
@@ -245,20 +247,26 @@ public class PanelPasien extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        if(text1.getText().equals("")) {
+        if (text1.getText().equals("")) {
             JOptionPane.showMessageDialog(frameMain, "nama belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
-        } else if(text2.getText().equals("")) {
+        } else if (text2.getText().equals("")) {
             JOptionPane.showMessageDialog(frameMain, "alamat belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
-        } else if(text4.getText().equals("")) {
+        } else if (text4.getText().equals("")) {
             JOptionPane.showMessageDialog(frameMain, "nama anak/pasien belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
-        
+
         try {
-            ArrayList arrayList = new ArrayList<>();
-            arrayList.add(2);
+            ArrayList<Gejala> arrayList = new ArrayList<>();
+            List<Gejala> list = panelDiagnosa.getPanelGejala().getList();
+            for (Gejala gejala : list) {
+                if (gejala.isSelected()) {
+                    arrayList.add(gejala);
+                }
+            }
+            
             JRBeanCollectionDataSource dt = new JRBeanCollectionDataSource(arrayList);
             HashMap map = new HashMap();
             map.put("parameter1", text1.getText());
@@ -267,29 +275,33 @@ public class PanelPasien extends javax.swing.JPanel {
             map.put("parameter4", text4.getText());
             map.put("parameter5", text5.getSelectedItem());
             map.put("parameter6", text6.getSelectedItem());
-            
+
             JTable table = panelDiagnosa.getPanelHasil().getTable();
             map.put("parameter7", table.getValueAt(0, 1));
             map.put("parameter8", table.getValueAt(1, 1));
             map.put("parameter9", table.getValueAt(2, 1));
             map.put("parameter10", table.getValueAt(3, 1));
             map.put("parameter11", table.getValueAt(4, 1));
-            
+
             map.put("parameter12", table.getValueAt(0, 2));
             map.put("parameter13", table.getValueAt(1, 2));
             map.put("parameter14", table.getValueAt(2, 2));
             map.put("parameter15", table.getValueAt(3, 2));
             map.put("parameter16", table.getValueAt(4, 2));
             map.put("parameter17", panelDiagnosa.getPanelHasil().getHasilDiagnosa());
-            
-            
+
             String[] string = panelDiagnosa.getPanelHasil().getSaran().split("\n\n\n");
             if(string.length == 1) {
-                map.put("parameter18", string[0]);
+                map.put("parameter18", string[0].replaceAll("  ", " "));
                 UtilityPrint.printReport(dt, "report1", map);
             } else {
                 map.put("parameter18", string[0]);
-                map.put("parameter19", string[1]);
+                StringBuilder  stringBuilder = new StringBuilder();
+                for (int i = 1; i < string.length; i++) {
+                    String string1 = string[i];
+                    stringBuilder.append(string1);
+                }
+                map.put("parameter19", stringBuilder.toString());
                 UtilityPrint.printReport(dt, "report2", map);
             }
         } catch (Exception ex) {

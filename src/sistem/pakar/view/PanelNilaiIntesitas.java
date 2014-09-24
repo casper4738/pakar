@@ -451,4 +451,6 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+    
+
 }

@@ -12,7 +12,6 @@ import javax.swing.JTable;
 import sistem.pakar.component.TableModelGejala;
 import sistem.pakar.sugeno.Gejala;
 import sistem.pakar.sugeno.Perilaku;
-import swingx.component.table.renderer.TableCellAlignmentRenderer;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 import swingx.component.table.renderer.TableCellColorRenderer;
 
@@ -53,7 +52,6 @@ public class PanelGejala extends javax.swing.JPanel {
         table.getColumnModel().getColumn(2).setCellRenderer(new TableCellColorRenderer());
         table.getColumnModel().getColumn(1).setPreferredWidth(50);
         table.getColumnModel().getColumn(0).setPreferredWidth(35);
-        
 
         table.setRowHeight(25);
     }
@@ -141,15 +139,15 @@ public class PanelGejala extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         int jumlah = 0;
         for (Gejala e : tableModel.getList()) {
-            if(e.isSelected()) {
+            if (e.isSelected()) {
                 jumlah++;
             }
         }
-        
-        if(jumlah == 0) { 
+
+        if (jumlah == 0) {
             JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
-        } else if(jumlah <= 1) { 
+        } else if (jumlah <= 1) {
             JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
@@ -165,6 +163,10 @@ public class PanelGejala extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    public List<Gejala> getList() {
+        return tableModel.getList();
+    }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
@@ -174,4 +176,5 @@ public class PanelGejala extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
+
 }
