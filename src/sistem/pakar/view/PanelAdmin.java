@@ -167,7 +167,6 @@ public class PanelAdmin extends javax.swing.JPanel {
         table.getColumnModel().getColumn(5).setCellEditor(new ButtonsEditor(table, tableModel));
 
         table.getColumnModel().getColumn(5).setPreferredWidth(150);
-
     }
 
     /**

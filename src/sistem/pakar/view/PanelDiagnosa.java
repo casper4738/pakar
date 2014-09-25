@@ -110,8 +110,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         panelMenu = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         buttonMenuUtama = new sistem.pakar.component.IButton();
-        buttonPerilaku = new sistem.pakar.component.IButton();
-        buttonBantuan = new sistem.pakar.component.IButton();
         buttonAdmin = new sistem.pakar.component.IButton();
         jPanel2 = new javax.swing.JPanel();
         buttonMenuUtama1 = new sistem.pakar.component.IButton();
@@ -123,7 +121,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
 
         setLayout(new java.awt.BorderLayout());
 
-        
         jLabel8.setFont(new java.awt.Font("Book Antiqua", 1, 24)); // NOI18N
         jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel8.setText("MENU");
@@ -148,31 +145,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
             }
         });
         jPanel1.add(buttonMenuUtama);
-
-        buttonPerilaku.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/people-1.png"))); // NOI18N
-        buttonPerilaku.setText("Perilaku Abnormal");
-        buttonPerilaku.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonPerilaku.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/people-2.png"))); // NOI18N
-        buttonPerilaku.setRoundRect(true);
-        buttonPerilaku.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonPerilakuActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buttonPerilaku);
-
-        buttonBantuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/help-1.png"))); // NOI18N
-        buttonBantuan.setText("Bantuan");
-        buttonBantuan.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonBantuan.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonBantuan.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/help-2.png"))); // NOI18N
-        buttonBantuan.setRoundRect(true);
-        buttonBantuan.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonBantuanActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buttonBantuan);
 
         buttonAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/admin.png"))); // NOI18N
         buttonAdmin.setText("Data Admin");
@@ -289,11 +261,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         frameMain.setPanel(new PanelMain(frameMain));
     }//GEN-LAST:event_buttonMenuUtamaActionPerformed
 
-    private void buttonPerilakuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPerilakuActionPerformed
-        showPanel("card6");
-        showMenu("menu2");
-    }//GEN-LAST:event_buttonPerilakuActionPerformed
-
     private void buttonMenuUtama1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama1ActionPerformed
        frameMain.setPanel(new PanelMain(frameMain));
     }//GEN-LAST:event_buttonMenuUtama1ActionPerformed
@@ -301,11 +268,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
     private void buttonMenuUtama2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama2ActionPerformed
         buttonMenuUtama1ActionPerformed(evt);
     }//GEN-LAST:event_buttonMenuUtama2ActionPerformed
-
-    private void buttonBantuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBantuanActionPerformed
-        showPanel("card8");
-        showMenu("menu2");
-    }//GEN-LAST:event_buttonBantuanActionPerformed
 
     private void buttonMenuUtama3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama3ActionPerformed
         showPanel("card4");
@@ -321,12 +283,10 @@ public class PanelDiagnosa extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private sistem.pakar.component.IButton buttonAdmin;
-    private sistem.pakar.component.IButton buttonBantuan;
     private sistem.pakar.component.IButton buttonMenuUtama;
     private sistem.pakar.component.IButton buttonMenuUtama1;
     private sistem.pakar.component.IButton buttonMenuUtama2;
     private sistem.pakar.component.IButton buttonMenuUtama3;
-    private sistem.pakar.component.IButton buttonPerilaku;
     private sistem.pakar.component.IPanel iPanel1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel8;

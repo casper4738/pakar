@@ -148,7 +148,7 @@ public class PanelGejala extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         } else if (jumlah <= 1) {
-            JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala lebih dari satu", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         panelDiagnosa.getPanelNilaiIntesitas().setData(tableModel.getList());

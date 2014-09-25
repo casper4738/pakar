@@ -6,6 +6,7 @@ package sistem.pakar.view;
 
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import java.awt.BorderLayout;
+import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
@@ -19,6 +20,7 @@ public class FrameMain extends JFrame {
 
     public static void main(String[] args) {
         try {
+            Locale.setDefault(Locale.ENGLISH);
             UIManager.setLookAndFeel(new WindowsLookAndFeel());
         } catch (Exception e) {
         }

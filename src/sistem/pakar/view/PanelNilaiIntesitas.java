@@ -326,7 +326,6 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[0] = d.getWeightAverage();
-            System.out.println("WA : " + wa[0]);
 
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
