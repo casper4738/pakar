@@ -12,7 +12,7 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
-import sistem.pakar.Perilaku;
+import sistem.pakar.sugeno.inferensi.Perilaku;
 import sistem.pakar.component.TableModelIntensitas;
 import sistem.pakar.sugeno.Defuzzyfikasi;
 import sistem.pakar.sugeno.DerajatKeanggotaan;

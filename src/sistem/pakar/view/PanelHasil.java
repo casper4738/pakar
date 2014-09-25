@@ -4,6 +4,7 @@
  */
 package sistem.pakar.view;
 
+import sistem.pakar.sugeno.Saran;
 import java.text.DecimalFormat;
 import javax.swing.JLabel;
 import javax.swing.JTable;

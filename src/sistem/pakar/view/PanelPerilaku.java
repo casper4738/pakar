@@ -15,7 +15,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import sistem.pakar.component.TableModelPerilakuGangguan;
 import sistem.pakar.sugeno.JenisGangguan;
-import sistem.pakar.sugeno.Perilaku;
+import sistem.pakar.sugeno.inferensi.Perilaku;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 
 /**

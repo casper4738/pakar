@@ -2,13 +2,16 @@
  * Netbeans 8.0 
  * JDK 1.7  
  */
-package sistem.pakar;
+package sistem.pakar.sugeno.inferensi;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import sistem.pakar.sugeno.Gejala;
+import sistem.pakar.sugeno.Gejala;
 import sistem.pakar.sugeno.JenisGangguan;
+import sistem.pakar.sugeno.JenisGangguan;
+import sistem.pakar.sugeno.WeightAverage;
 import sistem.pakar.sugeno.WeightAverage;
 
 /**
@@ -16,6 +19,19 @@ import sistem.pakar.sugeno.WeightAverage;
  * @author casper
  */
 public class Perilaku {
+
+    public static void main(String[] args) {
+
+        Perilaku tes = new Perilaku();
+        tes.perilaku1();
+//        Perilaku.perilaku2();
+//        Perilaku.perilaku3();
+//        Perilaku.perilaku4();
+//        tes.perilaku5();
+
+//        String string = "A  B";
+//        System.out.println(tes.getSumString(string, "B"));
+    }
 
     private final JenisGangguan[] jenisGangguans;
     private final List<Gejala>[] listCiri;
@@ -282,23 +298,18 @@ public class Perilaku {
         return list;
     }
 
-    public static void main(String[] args) {
+    public JenisGangguan[] getJenisGangguans() {
+        return jenisGangguans;
+    }
 
-        Perilaku tes = new Perilaku();
-//        tes.perilaku1();
-//        Perilaku.perilaku2();
-//        Perilaku.perilaku3();
-//        Perilaku.perilaku4();
-//        tes.perilaku5();
-
-        String string = "A  B";
-        System.out.println(tes.getSumString(string, "B"));
+    public List<Gejala>[] getListCiri() {
+        return listCiri;
     }
 
     String[][] thenGejala3 = {
         {"3;0;0", "2"},
         {"2;1;0", "2"},
-        {"2;0;1", "2"},
+        {"2;0;1", "5"},
         {"1;2;0", "5"},
         {"1;1;1", "5"},
         {"0;3;0", "5"},
@@ -310,8 +321,8 @@ public class Perilaku {
     String[][] thenGejala4 = {
         {"4;0;0", "2"},
         {"3;1;0", "2"},
-        {"3;0;1", "2"},
-        {"2;2;0", "2"},
+        {"3;0;1", "5"},
+        {"2;2;0", "5"},
         {"0;4;0", "5"},
         {"2;1;1", "5"},
         {"2;0;2", "5"},
@@ -327,9 +338,9 @@ public class Perilaku {
     private String[][] thenGejala5 = {
         {"5;0;0", "2"},
         {"4;1;0", "2"},
-        {"4;0;1", "2"},
-        {"3;2;0", "2"},
-        {"3;1;1", "2"},
+        {"4;0;1", "5"},
+        {"3;2;0", "5"},
+        {"3;1;1", "5"},
         {"0;5;0", "5"},
         {"1;4;0", "5"},
         {"0;4;1", "5"},
@@ -352,15 +363,15 @@ public class Perilaku {
         {"5;1;0", "2"},
         {"5;0;1", "2"},
         {"4;2;0", "2"},
-        {"4;0;2", "2"},
-        {"4;1;1", "2"},
-        {"3;3;0", "2"},
+        {"4;0;2", "5"},
+        {"4;1;1", "5"},
+        {"3;3;0", "5"},
         {"0;6;0", "5"},
         {"1;5;0", "5"},
         {"0;5;1", "5"},
         {"1;4;1", "5"},
         {"2;4;0", "5"},
-        {"0;4;2", "5"},
+        {"0;4;2", "8"},
         {"2;3;1", "5"},
         {"1;3;2", "5"},
         {"3;2;1", "5"},

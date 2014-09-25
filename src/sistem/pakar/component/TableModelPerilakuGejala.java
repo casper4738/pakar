@@ -109,8 +109,5 @@ public class TableModelPerilakuGejala extends AbstractTableModel {
         return sorter;
     }
 
-    public void setList(Gejala[] jenisGangguans) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 
 }

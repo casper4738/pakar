@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import sistem.pakar.component.TableModelGejala;
 import sistem.pakar.sugeno.Gejala;
-import sistem.pakar.sugeno.Perilaku;
+import sistem.pakar.sugeno.inferensi.Perilaku;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 import swingx.component.table.renderer.TableCellColorRenderer;
 

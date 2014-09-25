@@ -25,7 +25,7 @@ public class TableModelIntensitas extends AbstractTableModel {
     public List<Gejala> getList() {
         return list;
     }
-    
+
     public void setList(List<Gejala> list) {
         this.list = list;
         Collections.sort(list, new Comparator<Gejala>() {
@@ -78,12 +78,12 @@ public class TableModelIntensitas extends AbstractTableModel {
     @Override
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
-            case 0:
-                if(list.get(rowIndex).getValue() == 0) {
-                    return 1;
-                } else {
-                    return list.get(rowIndex).getValue();
-                }
+            case 0: {
+                if (list.get(rowIndex).getValue() == 0) {
+                    list.get(rowIndex).setValue(1);
+                } 
+                return list.get(rowIndex).getValue();
+            }
             case 1:
                 return list.get(rowIndex).getKode();
             case 2:
