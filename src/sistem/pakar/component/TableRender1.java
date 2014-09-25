@@ -4,6 +4,7 @@
  */
 package sistem.pakar.component;
 
+import java.awt.Color;
 import java.awt.Component;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -34,6 +35,13 @@ public class TableRender1 extends DefaultTableRenderer {
         textField4.setHorizontalAlignment(JLabel.LEFT);
         textField5.setHorizontalAlignment(JLabel.LEFT);
         textField6.setHorizontalAlignment(JLabel.LEFT);
+        
+        textField1.setBackground(Color.WHITE);
+        textField2.setBackground(Color.LIGHT_GRAY);
+        textField3.setBackground(Color.WHITE);
+        textField4.setBackground(Color.LIGHT_GRAY);
+        textField5.setBackground(Color.WHITE);
+        textField6.setBackground(Color.LIGHT_GRAY);
 
         try {
             textField1.setText(string[0]);

@@ -42,9 +42,8 @@ public class PanelBantuan extends javax.swing.JPanel {
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("CARA MENGGUNAKAN SISTEM");
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jLabel13.setText("<html>\n<ol>\n<li>AKSES MENU DIAGNOSA</li>\n<li>INPUT GEJALA  YANG DIDERITA ANAK</li>\n<li>PILIH TOMBOL PROSES</li>\n<li>MASUKKAN NILAI INTENSITAS GEJALA : </li>\n<ul><li>JARANG [0 – 5]</li>\n<li>SEDANG [2 – 8]</li>\n<li>SERING [5 – 10] </li> </ul>\n<li>PILIH TOMBOL PROSES UNTUK MENAMPILAKN HASIL DIAGNOSA</li>\n<li>HASIL DIAGNOSA BERUPA HARDPRINT DAPAT DIAKSES DENGAN MEMILIH TOMBOL PRINT</li>\n<li>SEBELUM MELIHAT LAPORAN HASIL  DIAGNOSA, ANDA WAJIB MENGISI DATA PRIBADI DAN DATA ANAK.</li>\n<li>SETELAH LAPORAN HASIL DIAGNOSA TAMPIL, ANDA DAPAT MEMILIH TOMBOL SAVE UNTUK MENYIMPAN DATA ATAU PRINT UNTUK MENCETAK. TOMBOL TERSEBUT TERLETAK PADA SEBELAH KANAN ATAS LAPORAN.\n</li>\n</ol>\n</html>\n");
+        jLabel13.setText("<html>\n<div style=\"height: 3cm;\">\n<ol>\n<li>AKSES MENU DIAGNOSA</li><br>\n<li>INPUT GEJALA  YANG DIDERITA ANAK</li>\n<li>PILIH TOMBOL PROSES</li>\n<li>MASUKKAN NILAI INTENSITAS GEJALA : </li>\n<ul><li>JARANG [0 – 5]</li>\n<li>SEDANG [2 – 8]</li>\n<li>SERING [5 – 10] </li> </ul>\n<li>PILIH TOMBOL PROSES UNTUK MENAMPILAKN HASIL DIAGNOSA</li>\n<li>HASIL DIAGNOSA BERUPA HARDPRINT DAPAT DIAKSES DENGAN MEMILIH TOMBOL PRINT</li>\n<li>SEBELUM MELIHAT LAPORAN HASIL  DIAGNOSA, ANDA WAJIB MENGISI DATA PRIBADI DAN DATA ANAK.</li>\n<li>SETELAH LAPORAN HASIL DIAGNOSA TAMPIL, ANDA DAPAT MEMILIH TOMBOL SAVE UNTUK MENYIMPAN DATA ATAU PRINT UNTUK MENCETAK. TOMBOL TERSEBUT TERLETAK PADA SEBELAH KANAN ATAS LAPORAN.\n</li>\n</ol>\n</div>\n</html>\n");
         jLabel13.setVerticalAlignment(javax.swing.SwingConstants.TOP);
 
         javax.swing.GroupLayout iPanelBorder1Layout = new javax.swing.GroupLayout(iPanelBorder1);
@@ -54,7 +53,7 @@ public class PanelBantuan extends javax.swing.JPanel {
             .addGroup(iPanelBorder1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(iPanelBorder1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 543, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 580, Short.MAX_VALUE)
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -64,7 +63,7 @@ public class PanelBantuan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
