@@ -42,6 +42,7 @@ public class FrameMain extends JFrame {
         frame.add(panelMain, BorderLayout.CENTER);
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setResizable(false);
         setPanel(new PanelMain(this));
         frame.setVisible(true);
     }
@@ -50,6 +51,7 @@ public class FrameMain extends JFrame {
         panelMain.removeAll();
         panelMain.add(panel, BorderLayout.CENTER);
         frame.pack();
+        frame.repaint();
         frame.revalidate();
         frame.setLocationRelativeTo(null);
     }

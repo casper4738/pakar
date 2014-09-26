@@ -153,6 +153,7 @@ public class PanelGejala extends javax.swing.JPanel {
         }
         panelDiagnosa.getPanelNilaiIntesitas().setData(tableModel.getList());
         panelDiagnosa.showPanel("card2");
+        panelDiagnosa.showMenu("menu11");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

@@ -4,6 +4,8 @@
  */
 package sistem.pakar.view;
 
+import java.awt.Dimension;
+
 /**
  *
  * @author casper
@@ -13,8 +15,8 @@ public class PanelMain extends javax.swing.JPanel {
     /**
      * Creates new form PanelMain
      */
-    private FrameMain frameMain;
-    private PanelDiagnosa panel;
+    private final FrameMain frameMain;
+    private final PanelDiagnosa panel;
 
     public PanelMain(FrameMain frameMain) {
         initComponents();
