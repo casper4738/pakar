@@ -2,7 +2,7 @@
  * Netbeans 8.0 
  * JDK 1.7  
  */
-package sistem.pakar.view;
+package sistem.pakar.component;
 
 import java.util.Enumeration;
 import java.util.Vector;

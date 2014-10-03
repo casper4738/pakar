@@ -2,7 +2,7 @@
  * Netbeans 8.0 
  * JDK 1.7  
  */
-package sistem.pakar.view;
+package sistem.pakar;
 
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import java.awt.BorderLayout;
@@ -11,6 +11,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
+import sistem.pakar.view.PanelDiagnosa;
+import sistem.pakar.view.PanelMenuUtama;
 
 /**
  *

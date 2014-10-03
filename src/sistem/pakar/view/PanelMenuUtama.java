@@ -4,6 +4,8 @@
  */
 package sistem.pakar.view;
 
+import sistem.pakar.FrameMain;
+
 /**
  *
  * @author casper

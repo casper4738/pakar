@@ -4,6 +4,7 @@
  */
 package sistem.pakar.view;
 
+import sistem.pakar.FrameMain;
 import java.awt.CardLayout;
 import javax.swing.JTabbedPane;
 

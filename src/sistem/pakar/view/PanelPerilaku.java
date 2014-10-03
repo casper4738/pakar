@@ -4,6 +4,7 @@
  */
 package sistem.pakar.view;
 
+import sistem.pakar.FrameMain;
 import java.util.Arrays;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;

@@ -4,6 +4,7 @@
  */
 package sistem.pakar.view;
 
+import sistem.pakar.FrameMain;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

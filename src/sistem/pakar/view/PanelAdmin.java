@@ -4,6 +4,7 @@
  */
 package sistem.pakar.view;
 
+import sistem.pakar.FrameMain;
 import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;

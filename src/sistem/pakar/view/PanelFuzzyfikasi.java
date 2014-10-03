@@ -4,6 +4,8 @@
  */
 package sistem.pakar.view;
 
+import sistem.pakar.component.ColumnGroup;
+import sistem.pakar.component.GroupableTableHeader;
 import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JTable;
