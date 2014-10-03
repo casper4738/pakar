@@ -14,7 +14,7 @@ import sistem.pakar.component.TableModelIntensitas;
 import sistem.pakar.sugeno.Defuzzyfikasi;
 import sistem.pakar.sugeno.Fuzzyfikasi;
 import sistem.pakar.sugeno.Gejala;
-import sistem.pakar.sugeno.Rule;
+import sistem.pakar.sugeno.inferensi.Rule;
 import sistem.pakar.sugeno.WeightAverage;
 import sistem.pakar.sugeno.inferensi.IntensitasGejala;
 import sistem.pakar.sugeno.inferensi.Perilaku;

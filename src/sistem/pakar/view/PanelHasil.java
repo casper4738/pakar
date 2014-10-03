@@ -7,7 +7,7 @@ package sistem.pakar.view;
 import java.text.DecimalFormat;
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import sistem.pakar.sugeno.Saran;
+import sistem.pakar.sugeno.inferensi.Saran;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 
 /**

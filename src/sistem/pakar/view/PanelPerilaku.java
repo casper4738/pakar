@@ -14,7 +14,7 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import sistem.pakar.component.TableModelPerilakuGangguan;
+import sistem.pakar.component.TableModelPerilaku;
 import sistem.pakar.sugeno.JenisGangguan;
 import sistem.pakar.sugeno.inferensi.Perilaku;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
@@ -28,23 +28,19 @@ public class PanelPerilaku extends javax.swing.JPanel {
     /**
      * Creates new form PanelPerilaku
      */
-    private FrameMain frameMain;
     private Perilaku perilaku;
-
     private JTable table1;
     private JComboBox comboSearch1;
     private JTextField textSearch1;
 
-    public PanelPerilaku(FrameMain frameMain) {
+    public PanelPerilaku() {
         initComponents();
-        this.frameMain = frameMain;
         perilaku = new Perilaku();
-
         table1 = iTable1.getTable();
         comboSearch1 = iTable1.getComboSearch();
         textSearch1 = iTable1.getTextSearch();
 
-        final TableModelPerilakuGangguan tableModelGangguan = new TableModelPerilakuGangguan();
+        final TableModelPerilaku tableModelGangguan = new TableModelPerilaku();
         JenisGangguan[] jenisGangguans = perilaku.getJenisGangguans();
         tableModelGangguan.setList(Arrays.asList(jenisGangguans));
         table1.setModel(tableModelGangguan);

@@ -7,46 +7,40 @@
  */
 package sistem.pakar.component;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.RowFilter;
 import javax.swing.table.AbstractTableModel;
 import javax.swing.table.TableRowSorter;
-import sistem.pakar.sugeno.WeightAverage;
+import sistem.pakar.sugeno.JenisGangguan;
 
 /**
  *
  * @author fa
  */
-public class TableModelPredikat extends AbstractTableModel {
+public class TableModelPerilaku extends AbstractTableModel {
 
-    private List<WeightAverage> list = new ArrayList<>();
-    private TableRowSorter<TableModelPredikat> sorter;
-    private DecimalFormat decimalFormat;
+    private List<JenisGangguan> list = new ArrayList<>();
+    private TableRowSorter<TableModelPerilaku> sorter;
 
-    public TableModelPredikat() {
-        decimalFormat = new DecimalFormat("#0.000");
+    public TableModelPerilaku() {
         sorter = new TableRowSorter<>(this);
-        sorter.setComparator(0, new Comparator<WeightAverage>() {
+        sorter.setComparator(0, new Comparator<JenisGangguan>() {
             @Override
-            public int compare(WeightAverage o1, WeightAverage o2) {
+            public int compare(JenisGangguan o1, JenisGangguan o2) {
                 return o1.getKode().compareTo(o2.getKode());
             }
         });
     }
 
-    public List<WeightAverage> getList() {
-        return list;
-    }
 
-    public void setList(List<WeightAverage> list) {
+    public void setList(List<JenisGangguan> list) {
         this.list = list;
         sorter.setModel(this);
     }
 
-    public boolean add(WeightAverage e) {
+    public boolean add(JenisGangguan e) {
         try {
             return list.add(e);
         } finally {
@@ -54,7 +48,7 @@ public class TableModelPredikat extends AbstractTableModel {
         }
     }
 
-    public WeightAverage update(int index, WeightAverage e) {
+    public JenisGangguan update(int index, JenisGangguan e) {
         try {
             return list.set(index, e);
         } finally {
@@ -62,7 +56,7 @@ public class TableModelPredikat extends AbstractTableModel {
         }
     }
 
-    public WeightAverage remove(int index) {
+    public JenisGangguan remove(int index) {
         try {
             return list.remove(index);
         } finally {
@@ -70,7 +64,7 @@ public class TableModelPredikat extends AbstractTableModel {
         }
     }
 
-    public WeightAverage get(int index) {
+    public JenisGangguan get(int index) {
         return list.get(index);
     }
 
@@ -81,7 +75,7 @@ public class TableModelPredikat extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-        return 3;
+        return 2;
     }
 
     @Override
@@ -90,9 +84,7 @@ public class TableModelPredikat extends AbstractTableModel {
             case 0:
                 return list.get(rowIndex).getKode();
             case 1:
-                return decimalFormat.format(list.get(rowIndex).getPredikatAturan());
-            case 2:
-                return list.get(rowIndex).getNilaiOutput();
+                return list.get(rowIndex).getJenis();
             default:
                 return null;
         }
@@ -102,11 +94,9 @@ public class TableModelPredikat extends AbstractTableModel {
     public String getColumnName(int column) {
         switch (column) {
             case 0:
-                return "RULE";
+                return "KODE";
             case 1:
-                return "NILAI α";
-            case 2:
-                return "NILAI z";
+                return "PERILAKU";
             default:
                 return null;
         }
@@ -116,8 +106,9 @@ public class TableModelPredikat extends AbstractTableModel {
         this.sorter.setRowFilter(RowFilter.regexFilter("(?i)" + key.trim(), column));
     }
 
-    public TableRowSorter<TableModelPredikat> getSorter() {
+    public TableRowSorter<TableModelPerilaku> getSorter() {
         return sorter;
     }
+
 
 }

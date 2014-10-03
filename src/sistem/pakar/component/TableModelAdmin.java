@@ -22,11 +22,13 @@ import sistem.pakar.sugeno.Admin;
  */
 public class TableModelAdmin extends AbstractTableModel {
 
-    private List<Admin> list = new ArrayList<>();
+    private List<Admin> list;
     private TableRowSorter<TableModelAdmin> sorter;
-    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+    private SimpleDateFormat format;
 
     public TableModelAdmin() {
+        list = new ArrayList<>();
+        format = new SimpleDateFormat("yyyy-MM-dd");
         sorter = new TableRowSorter<>(this);
         sorter.setComparator(0, new Comparator<Admin>() {
             @Override

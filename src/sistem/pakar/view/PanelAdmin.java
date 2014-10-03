@@ -53,16 +53,9 @@ public class PanelAdmin extends javax.swing.JPanel {
     /**
      * Creates new form PanelAdmin
      */
-    private FrameMain frameMain;
-
-    private JTable table;
-    private JComboBox comboSearch;
-    private JTextField textSearch;
-
-    public PanelAdmin(FrameMain frameMain) {
+    private TableModelAdmin tableModel;
+    public PanelAdmin() {
         initComponents();
-        this.frameMain = frameMain;
-
         table = iTable1.getTable();
         comboSearch = iTable1.getComboSearch();
         textSearch = iTable1.getTextSearch();
@@ -101,7 +94,7 @@ public class PanelAdmin extends javax.swing.JPanel {
             list.add(e);
         }
 
-        final TableModelAdmin tableModel = new TableModelAdmin();
+        tableModel = new TableModelAdmin();
         tableModel.setList(list);
         table.setModel(tableModel);
 
@@ -219,6 +212,9 @@ public class PanelAdmin extends javax.swing.JPanel {
     private sistem.pakar.component.ITable iTable1;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+    private JTable table;
+    private JComboBox comboSearch;
+    private JTextField textSearch;
 }
 
 class ButtonsPanel extends JPanel {
@@ -234,9 +230,6 @@ class ButtonsPanel extends JPanel {
             add(b);
         }
     }
-//     @Override public void updateUI() {
-//         super.updateUI();
-//     }
 }
 
 class ButtonsRenderer extends ButtonsPanel implements TableCellRenderer {

@@ -16,13 +16,8 @@ public class PanelBantuan extends javax.swing.JPanel {
     /**
      * Creates new form PanelBantuan
      */
-    private FrameMain frameMain;
-    private PanelDiagnosa panelDiagnosa;
-    public PanelBantuan(FrameMain frameMain, PanelDiagnosa panelDiagnosa) {
+    public PanelBantuan() {
         initComponents();
-        
-        this.frameMain = frameMain;
-        this.panelDiagnosa = panelDiagnosa;
     }
 
     /**

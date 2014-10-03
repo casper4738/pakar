@@ -4,9 +4,10 @@
  */
 package sistem.pakar.sugeno;
 
+import sistem.pakar.sugeno.inferensi.Rule;
+import sistem.pakar.sugeno.inferensi.IntensitasGejala;
 import java.util.ArrayList;
 import java.util.List;
-import sistem.pakar.sugeno.inferensi.IntensitasGejala;
 
 /**
  *

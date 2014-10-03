@@ -2,7 +2,7 @@
  * Netbeans 8.0 
  * JDK 1.7  
  */
-package sistem.pakar.sugeno;
+package sistem.pakar.sugeno.inferensi;
 
 import java.util.ArrayList;
 import java.util.List;

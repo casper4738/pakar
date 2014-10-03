@@ -19,14 +19,6 @@ public class WeightAverage {
     public WeightAverage() {
     }
 
-    public WeightAverage(String kode, String rule, String then, double predikatAturan, double nilaiOutput) {
-        this.kode = kode;
-        this.rule = rule;
-        this.then = then;
-        this.predikatAturan = predikatAturan;
-        this.nilaiOutput = nilaiOutput;
-    }
-
     public String getKode() {
         return kode;
     }

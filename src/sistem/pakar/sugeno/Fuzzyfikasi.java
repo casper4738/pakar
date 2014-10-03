@@ -17,12 +17,6 @@ public class Fuzzyfikasi extends Gejala {
     public Fuzzyfikasi() {
     }
 
-    public Fuzzyfikasi(double jarang, double sedang, double sering) {
-        this.jarang = jarang;
-        this.sedang = sedang;
-        this.sering = sering;
-    }
-
     public double getJarang() {
         return jarang;
     }

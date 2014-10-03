@@ -44,10 +44,10 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         panelInferensi = new PanelInferensi();
         panelDeffuzyfikasi = new PanelDeffuzyfikasi();
         
-        panelPerilaku = new PanelPerilaku(frameMain);
-        panelPasien = new PanelPasien(frameMain, this);
-        panelBantuan = new PanelBantuan(frameMain, this);
-        panelAdmin = new PanelAdmin(frameMain);
+        panelPerilaku = new PanelPerilaku();
+        panelPasien = new PanelPasien(this);
+        panelBantuan = new PanelBantuan();
+        panelAdmin = new PanelAdmin();
         
         panelNilaiIntesitas.setOpaque(false);
         panelGejala.setOpaque(false);

@@ -30,11 +30,9 @@ public class PanelPasien extends javax.swing.JPanel {
      * Creates new form PanelPasien
      */
     private PanelDiagnosa panelDiagnosa;
-    private FrameMain frameMain;
 
-    public PanelPasien(FrameMain frameMain, PanelDiagnosa panelDiagnosa) {
+    public PanelPasien(PanelDiagnosa panelDiagnosa) {
         initComponents();
-        this.frameMain = frameMain;
         this.panelDiagnosa = panelDiagnosa;
 
         text1.setDocument(new FilterInput().getTextLimit(50, true));
@@ -259,13 +257,13 @@ public class PanelPasien extends javax.swing.JPanel {
 
     private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
         if (text1.getText().equals("")) {
-            JOptionPane.showMessageDialog(frameMain, "nama belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(panelDiagnosa, "nama belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         } else if (text2.getText().equals("")) {
-            JOptionPane.showMessageDialog(frameMain, "alamat belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(panelDiagnosa, "alamat belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         } else if (text4.getText().equals("")) {
-            JOptionPane.showMessageDialog(frameMain, "nama anak/pasien belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(panelDiagnosa, "nama anak/pasien belum diisi", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
 
