@@ -6,7 +6,6 @@ package sistem.pakar.view;
 
 import java.text.DecimalFormat;
 import javax.swing.JLabel;
-import javax.swing.JTable;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 
 /**
@@ -18,13 +17,8 @@ public class PanelDeffuzyfikasi extends javax.swing.JPanel {
     /**
      * Creates new form PanelHasil
      */
-    private PanelDiagnosa panelDiagnosa;
-    private FrameMain frameMain;
-
-    public PanelDeffuzyfikasi(FrameMain frameMain, PanelDiagnosa panelDiagnosa) {
+    public PanelDeffuzyfikasi() {
         initComponents();
-        this.frameMain = frameMain;
-        this.panelDiagnosa = panelDiagnosa;
         setOpaque(false);
         table.setRowHeight(25);
     }
@@ -73,7 +67,6 @@ public class PanelDeffuzyfikasi extends javax.swing.JPanel {
             return format.format(x);
         }
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.

@@ -10,7 +10,7 @@ import java.util.Locale;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.UIManager;
-import sistem.pakar.sugeno.Rule;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -22,7 +22,7 @@ public class FrameMain extends JFrame {
         try {
             Locale.setDefault(Locale.ENGLISH);
             UIManager.setLookAndFeel(new WindowsLookAndFeel());
-        } catch (Exception e) {
+        } catch (UnsupportedLookAndFeelException e) {
         }
         FrameMain frameMain = new FrameMain();
         frameMain.init();
@@ -30,12 +30,14 @@ public class FrameMain extends JFrame {
 
     private JFrame frame;
     private JPanel panelMain;
-    private Rule rule;
+    private PanelMenuUtama panelMenuUtama;
+    private PanelDiagnosa panelDiagnosa;
 
     public void init() {
-        rule = new Rule();
 
         panelMain = new JPanel(new BorderLayout());
+        panelMenuUtama = new PanelMenuUtama(this);
+        panelDiagnosa = new PanelDiagnosa(this);
 
         frame = new JFrame("Sistem Pakar Diagnosa Awal Perilaku Abnormal");
         frame.setLayout(new BorderLayout());
@@ -43,7 +45,7 @@ public class FrameMain extends JFrame {
         frame.setLocationRelativeTo(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(false);
-        setPanel(new PanelMain(this));
+        setPanel(panelMenuUtama);
         frame.setVisible(true);
     }
 
@@ -56,8 +58,12 @@ public class FrameMain extends JFrame {
         frame.setLocationRelativeTo(null);
     }
 
-    public Rule getRule() {
-        return rule;
+    public PanelMenuUtama getPanelMenuUtama() {
+        return panelMenuUtama;
+    }
+
+    public PanelDiagnosa getPanelDiagnosa() {
+        return panelDiagnosa;
     }
 
 }

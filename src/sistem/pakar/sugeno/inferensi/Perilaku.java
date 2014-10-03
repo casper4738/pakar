@@ -1,17 +1,10 @@
-/*
- * Netbeans 8.0 
- * JDK 1.7  
- */
+
 package sistem.pakar.sugeno.inferensi;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
 import sistem.pakar.sugeno.Gejala;
-import sistem.pakar.sugeno.Gejala;
-import sistem.pakar.sugeno.JenisGangguan;
-import sistem.pakar.sugeno.JenisGangguan;
-import sistem.pakar.sugeno.WeightAverage;
 import sistem.pakar.sugeno.WeightAverage;
 
 /**
@@ -23,20 +16,20 @@ public class Perilaku {
     public static void main(String[] args) {
 
         Perilaku tes = new Perilaku();
-        tes.perilaku1();
-//        Perilaku.perilaku2();
-//        Perilaku.perilaku3();
-//        Perilaku.perilaku4();
+        tes.perilaku4();
+//        JenisGangguan.perilaku2();
+//        JenisGangguan.perilaku3();
+//        JenisGangguan.perilaku4();
 //        tes.perilaku5();
 
 //        String string = "A  B";
 //        System.out.println(tes.getSumString(string, "B"));
     }
 
-    private final JenisGangguan[] jenisGangguans;
+    private final sistem.pakar.sugeno.JenisGangguan[] jenisGangguans;
     private final List<Gejala>[] listCiri;
 
-    private final String[] kategori = {"RINGAN", "SEDANG", "BERAT"};
+    private final String[] kategori = {"JARANG", "SEDANG", "SERING"};
     private final List<WeightAverage> list;
     private final DecimalFormat decimalFormat;
     private int x = 1;
@@ -45,12 +38,12 @@ public class Perilaku {
         decimalFormat = new DecimalFormat("#0000");
         list = new ArrayList<>();
 
-        jenisGangguans = new JenisGangguan[5];
-        jenisGangguans[0] = new JenisGangguan("P1", "ADHD");
-        jenisGangguans[1] = new JenisGangguan("P2", "PERKEMBANGAN BELAJAR");
-        jenisGangguans[2] = new JenisGangguan("P3", "KETERAMPILAN MOTORIK");
-        jenisGangguans[3] = new JenisGangguan("P4", "KOMUNIKASI");
-        jenisGangguans[4] = new JenisGangguan("P5", "AUTISME");
+        jenisGangguans = new sistem.pakar.sugeno.JenisGangguan[5];
+        jenisGangguans[0] = new sistem.pakar.sugeno.JenisGangguan("P1", "ADHD");
+        jenisGangguans[1] = new sistem.pakar.sugeno.JenisGangguan("P2", "PERKEMBANGAN BELAJAR");
+        jenisGangguans[2] = new sistem.pakar.sugeno.JenisGangguan("P3", "KETERAMPILAN MOTORIK");
+        jenisGangguans[3] = new sistem.pakar.sugeno.JenisGangguan("P4", "KOMUNIKASI");
+        jenisGangguans[4] = new sistem.pakar.sugeno.JenisGangguan("P5", "AUTISME");
 
         listCiri = new ArrayList[5];
         listCiri[0] = new ArrayList<>();
@@ -164,6 +157,7 @@ public class Perilaku {
                             + listCiri[3].get(1).getGejala() + " " + kategori[j] + " ; "
                             + listCiri[3].get(2).getGejala() + " " + kategori[k] + " ; ");
                     wa.setThen(jenisGangguans[3].getJenis() + " " + thenGejala3(getSumString(wa.getRule(), "RINGAN") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "BERAT")));
+//                    System.out.println(x+"|"+wa.getRule());
                     list.add(wa);
                     x++;
                 }
@@ -187,7 +181,6 @@ public class Perilaku {
                                         + listCiri[4].get(4).getGejala() + " " + kategori[m] + " ; "
                                         + listCiri[4].get(5).getGejala() + " " + kategori[n] + " ; ");
                                 wa.setThen(jenisGangguans[4].getJenis() + " " + thenGejala6(getSumString(wa.getRule(), "RINGAN") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "BERAT")));
-//                                System.out.println(wa.getRule());
                                 list.add(wa);
                                 x++;
                             }
@@ -204,13 +197,13 @@ public class Perilaku {
             if (match.equals(string[0])) {
                 switch (string[1]) {
                     case "2":
-                        stringBuilder.append("RINGAN");
+                        stringBuilder.append("JARANG");
                         break;
                     case "5":
                         stringBuilder.append("SEDANG");
                         break;
                     case "8":
-                        stringBuilder.append("BERAT");
+                        stringBuilder.append("SERING");
                         break;
                 }
                 break;
@@ -225,13 +218,13 @@ public class Perilaku {
             if (match.equals(string[0])) {
                 switch (string[1]) {
                     case "2":
-                        stringBuilder.append("RINGAN");
+                        stringBuilder.append("JARANG");
                         break;
                     case "5":
                         stringBuilder.append("SEDANG");
                         break;
                     case "8":
-                        stringBuilder.append("BERAT");
+                        stringBuilder.append("SERING");
                         break;
                 }
                 break;
@@ -267,13 +260,13 @@ public class Perilaku {
             if (match.equals(string[0])) {
                 switch (string[1]) {
                     case "2":
-                        stringBuilder.append("RINGAN");
+                        stringBuilder.append("JARANG");
                         break;
                     case "5":
                         stringBuilder.append("SEDANG");
                         break;
                     case "8":
-                        stringBuilder.append("BERAT");
+                        stringBuilder.append("SERING");
                         break;
                 }
                 break;
@@ -298,7 +291,7 @@ public class Perilaku {
         return list;
     }
 
-    public JenisGangguan[] getJenisGangguans() {
+    public sistem.pakar.sugeno.JenisGangguan[] getJenisGangguans() {
         return jenisGangguans;
     }
 

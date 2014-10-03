@@ -4,11 +4,13 @@
  */
 package sistem.pakar.view;
 
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JTable;
 import javax.swing.table.JTableHeader;
 import javax.swing.table.TableColumnModel;
-import sistem.pakar.component.TableModelDerajatKeanggotaan;
+import sistem.pakar.component.TableModelFuzzyfikasi;
+import sistem.pakar.sugeno.Fuzzyfikasi;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 import swingx.component.table.renderer.TableCellColorRenderer;
 
@@ -21,21 +23,14 @@ public class PanelFuzzyfikasi extends javax.swing.JPanel {
     /**
      * Creates new form PanelFuzzyfikasi
      */
-    private FrameMain frameMain;
-    private PanelDiagnosa panelDiagnosa;
-    private TableModelDerajatKeanggotaan tableModel;
-
-    public PanelFuzzyfikasi(FrameMain frameMain, PanelDiagnosa panelDiagnosa) {
+    private TableModelFuzzyfikasi tableModel;
+    public PanelFuzzyfikasi() {
         initComponents();
-        this.frameMain = frameMain;
-        this.panelDiagnosa = panelDiagnosa;
-
-        tableModel = new TableModelDerajatKeanggotaan();
-
+        tableModel = new TableModelFuzzyfikasi();
     }
 
-    public void setData() {
-        tableModel.setList(frameMain.getRule().getListKeanggotaans());
+    public void setData(List<Fuzzyfikasi> list) {
+        tableModel.setList(list);
         JTable table = new JTable(tableModel) {
             protected JTableHeader createDefaultTableHeader() {
                 return new GroupableTableHeader(columnModel);

@@ -13,33 +13,33 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
-import sistem.pakar.sugeno.DerajatKeanggotaan;
+import sistem.pakar.sugeno.Fuzzyfikasi;
 
 /**
  *
  * @author fa
  */
-public class TableModelDerajatKeanggotaan extends AbstractTableModel {
+public class TableModelFuzzyfikasi extends AbstractTableModel {
 
-    private List<DerajatKeanggotaan> list = new ArrayList<>();
+    private List<Fuzzyfikasi> list = new ArrayList<>();
     private DecimalFormat format = new DecimalFormat("#0.000");
 
-    public List<DerajatKeanggotaan> getList() {
+    public List<Fuzzyfikasi> getList() {
         return list;
     }
 
-    public void setList(List<DerajatKeanggotaan> list) {
+    public void setList(List<Fuzzyfikasi> list) {
         this.list = list;
-        Collections.sort(list, new Comparator<DerajatKeanggotaan>() {
+        Collections.sort(list, new Comparator<Fuzzyfikasi>() {
             @Override
-            public int compare(DerajatKeanggotaan o1, DerajatKeanggotaan o2) {
+            public int compare(Fuzzyfikasi o1, Fuzzyfikasi o2) {
                 return o1.getKode().compareTo(o2.getKode());
             }
         });
         fireTableDataChanged();
     }
 
-    public boolean add(DerajatKeanggotaan e) {
+    public boolean add(Fuzzyfikasi e) {
         try {
             return list.add(e);
         } finally {
@@ -47,7 +47,7 @@ public class TableModelDerajatKeanggotaan extends AbstractTableModel {
         }
     }
 
-    public DerajatKeanggotaan update(int index, DerajatKeanggotaan e) {
+    public Fuzzyfikasi update(int index, Fuzzyfikasi e) {
         try {
             return list.set(index, e);
         } finally {
@@ -55,7 +55,7 @@ public class TableModelDerajatKeanggotaan extends AbstractTableModel {
         }
     }
 
-    public DerajatKeanggotaan remove(int index) {
+    public Fuzzyfikasi remove(int index) {
         try {
             return list.remove(index);
         } finally {
@@ -63,7 +63,7 @@ public class TableModelDerajatKeanggotaan extends AbstractTableModel {
         }
     }
 
-    public DerajatKeanggotaan get(int index) {
+    public Fuzzyfikasi get(int index) {
         return list.get(index);
     }
 
@@ -83,11 +83,11 @@ public class TableModelDerajatKeanggotaan extends AbstractTableModel {
             case 0:
                 return list.get(rowIndex).getGejala();
             case 1:
-                return format.format(list.get(rowIndex).getRingan());
+                return format.format(list.get(rowIndex).getJarang());
             case 2:
                 return format.format(list.get(rowIndex).getSedang());
             case 3:
-                return format.format(list.get(rowIndex).getBerat());
+                return format.format(list.get(rowIndex).getSering());
             default:
                 return null;
         }
@@ -99,11 +99,11 @@ public class TableModelDerajatKeanggotaan extends AbstractTableModel {
             case 0:
                 return "GEJALA";
             case 1:
-                return "µ RINGAN";
+                return "µ JARANG";
             case 2:
                 return "µ SEDANG";
             case 3:
-                return "µ BERAT";
+                return "µ SERING";
             default:
                 return null;
         }

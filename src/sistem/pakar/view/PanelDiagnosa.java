@@ -5,11 +5,7 @@
 package sistem.pakar.view;
 
 import java.awt.CardLayout;
-import java.awt.Dimension;
-import java.util.ArrayList;
-import java.util.List;
 import javax.swing.JTabbedPane;
-import sistem.pakar.sugeno.WeightAverage;
 
 /**
  *
@@ -26,15 +22,11 @@ public class PanelDiagnosa extends javax.swing.JPanel {
     private PanelFuzzyfikasi panelFuzzyfikazi;
     private PanelInferensi panelInferensi;
     private PanelDeffuzyfikasi panelDeffuzyfikasi;
-    
-    private PanelPredikatAturan panelPredikatAturan;
     private PanelHasil panelHasil;
     private PanelPerilaku panelPerilaku;
     private PanelPasien panelPasien;
     private PanelBantuan panelBantuan;
     private PanelAdmin panelAdmin;
-    
-    List<WeightAverage> listRule;
     
     public PanelDiagnosa(FrameMain frameMain) {
         initComponents();
@@ -43,16 +35,14 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         
         tabbedPane = new JTabbedPane();
         
-        listRule = new ArrayList<>();
         
-        panelGejala = new PanelGejala(frameMain, this);
-        panelNilaiIntesitas = new PanelNilaiIntesitas(frameMain, this);
-        panelFuzzyfikazi = new PanelFuzzyfikasi(frameMain, this);
-        panelInferensi = new PanelInferensi(frameMain, this);
-        panelDeffuzyfikasi = new PanelDeffuzyfikasi(frameMain, this);
-        panelHasil = new PanelHasil(frameMain, this);
+        panelGejala = new PanelGejala(this);
+        panelNilaiIntesitas = new PanelNilaiIntesitas(this);
+        panelHasil = new PanelHasil(this);
+        panelFuzzyfikazi = new PanelFuzzyfikasi();
+        panelInferensi = new PanelInferensi();
+        panelDeffuzyfikasi = new PanelDeffuzyfikasi();
         
-        panelPredikatAturan = new PanelPredikatAturan(frameMain, this);
         panelPerilaku = new PanelPerilaku(frameMain);
         panelPasien = new PanelPasien(frameMain, this);
         panelBantuan = new PanelBantuan(frameMain, this);
@@ -61,7 +51,6 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         panelNilaiIntesitas.setOpaque(false);
         panelGejala.setOpaque(false);
         panelFuzzyfikazi.setOpaque(false);
-        panelPredikatAturan.setOpaque(false);
         panelHasil.setOpaque(false);
         panelPerilaku.setOpaque(false);
         panelPasien.setOpaque(false);
@@ -110,21 +99,21 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         jPanel3 = new javax.swing.JPanel();
         panelMenu = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        buttonMenuUtama = new sistem.pakar.component.IButton();
-        buttonAdmin = new sistem.pakar.component.IButton();
-        jPanel11 = new javax.swing.JPanel();
-        buttonMenuUtama5 = new sistem.pakar.component.IButton();
-        buttonAdmin1 = new sistem.pakar.component.IButton();
-        jPanel2 = new javax.swing.JPanel();
         buttonMenuUtama1 = new sistem.pakar.component.IButton();
-        jPanel4 = new javax.swing.JPanel();
+        buttonAdmin1 = new sistem.pakar.component.IButton();
+        jPanel11 = new javax.swing.JPanel();
         buttonMenuUtama2 = new sistem.pakar.component.IButton();
-        jPanel5 = new javax.swing.JPanel();
+        buttonAdmin2 = new sistem.pakar.component.IButton();
+        jPanel2 = new javax.swing.JPanel();
+        buttonKembali1 = new sistem.pakar.component.IButton();
+        jPanel4 = new javax.swing.JPanel();
         buttonMenuUtama3 = new sistem.pakar.component.IButton();
+        jPanel5 = new javax.swing.JPanel();
+        buttonKembali2 = new sistem.pakar.component.IButton();
         jPanel6 = new javax.swing.JPanel();
-        buttonMenuUtama4 = new sistem.pakar.component.IButton();
+        buttonKembali3 = new sistem.pakar.component.IButton();
         jPanel7 = new javax.swing.JPanel();
-        buttonMenuUtama6 = new sistem.pakar.component.IButton();
+        buttonKembali4 = new sistem.pakar.component.IButton();
         iPanelBg1 = new sistem.pakar.component.IPanelBg();
         iPanelBg2 = new sistem.pakar.component.IPanelBg();
 
@@ -142,47 +131,18 @@ public class PanelDiagnosa extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
-        buttonMenuUtama.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-1.png"))); // NOI18N
-        buttonMenuUtama.setText("Menu Utama");
-        buttonMenuUtama.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonMenuUtama.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonMenuUtama.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-2.png"))); // NOI18N
-        buttonMenuUtama.setRoundRect(true);
-        buttonMenuUtama.addActionListener(new java.awt.event.ActionListener() {
+        buttonMenuUtama1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-1.png"))); // NOI18N
+        buttonMenuUtama1.setText("Menu Utama");
+        buttonMenuUtama1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonMenuUtama1.setPreferredSize(new java.awt.Dimension(173, 41));
+        buttonMenuUtama1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-2.png"))); // NOI18N
+        buttonMenuUtama1.setRoundRect(true);
+        buttonMenuUtama1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMenuUtamaActionPerformed(evt);
+                buttonMenuUtama1ActionPerformed(evt);
             }
         });
-        jPanel1.add(buttonMenuUtama);
-
-        buttonAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/admin.png"))); // NOI18N
-        buttonAdmin.setText("Data Admin");
-        buttonAdmin.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonAdmin.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonAdmin.setRoundRect(true);
-        buttonAdmin.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonAdminActionPerformed(evt);
-            }
-        });
-        jPanel1.add(buttonAdmin);
-
-        panelMenu.add(jPanel1, "menu1");
-
-        jPanel11.setOpaque(false);
-
-        buttonMenuUtama5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-1.png"))); // NOI18N
-        buttonMenuUtama5.setText("Menu Utama");
-        buttonMenuUtama5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonMenuUtama5.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonMenuUtama5.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-2.png"))); // NOI18N
-        buttonMenuUtama5.setRoundRect(true);
-        buttonMenuUtama5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMenuUtama5ActionPerformed(evt);
-            }
-        });
-        jPanel11.add(buttonMenuUtama5);
+        jPanel1.add(buttonMenuUtama1);
 
         buttonAdmin1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/admin.png"))); // NOI18N
         buttonAdmin1.setText("Data Admin");
@@ -194,28 +154,11 @@ public class PanelDiagnosa extends javax.swing.JPanel {
                 buttonAdmin1ActionPerformed(evt);
             }
         });
-        jPanel11.add(buttonAdmin1);
+        jPanel1.add(buttonAdmin1);
 
-        panelMenu.add(jPanel11, "menu11");
+        panelMenu.add(jPanel1, "menu1");
 
-        jPanel2.setOpaque(false);
-
-        buttonMenuUtama1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
-        buttonMenuUtama1.setText("Kembali");
-        buttonMenuUtama1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonMenuUtama1.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonMenuUtama1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
-        buttonMenuUtama1.setRoundRect(true);
-        buttonMenuUtama1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMenuUtama1ActionPerformed(evt);
-            }
-        });
-        jPanel2.add(buttonMenuUtama1);
-
-        panelMenu.add(jPanel2, "menu2");
-
-        jPanel4.setOpaque(false);
+        jPanel11.setOpaque(false);
 
         buttonMenuUtama2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-1.png"))); // NOI18N
         buttonMenuUtama2.setText("Menu Utama");
@@ -228,58 +171,104 @@ public class PanelDiagnosa extends javax.swing.JPanel {
                 buttonMenuUtama2ActionPerformed(evt);
             }
         });
-        jPanel4.add(buttonMenuUtama2);
+        jPanel11.add(buttonMenuUtama2);
 
-        panelMenu.add(jPanel4, "menu3");
+        buttonAdmin2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/admin.png"))); // NOI18N
+        buttonAdmin2.setText("Data Admin");
+        buttonAdmin2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonAdmin2.setPreferredSize(new java.awt.Dimension(173, 41));
+        buttonAdmin2.setRoundRect(true);
+        buttonAdmin2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonAdmin2ActionPerformed(evt);
+            }
+        });
+        jPanel11.add(buttonAdmin2);
 
-        jPanel5.setOpaque(false);
+        panelMenu.add(jPanel11, "menu11");
 
-        buttonMenuUtama3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
-        buttonMenuUtama3.setText("Kembali");
+        jPanel2.setOpaque(false);
+
+        buttonKembali1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
+        buttonKembali1.setText("Kembali");
+        buttonKembali1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonKembali1.setPreferredSize(new java.awt.Dimension(173, 41));
+        buttonKembali1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
+        buttonKembali1.setRoundRect(true);
+        buttonKembali1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKembali1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(buttonKembali1);
+
+        panelMenu.add(jPanel2, "menu2");
+
+        jPanel4.setOpaque(false);
+
+        buttonMenuUtama3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-1.png"))); // NOI18N
+        buttonMenuUtama3.setText("Menu Utama");
         buttonMenuUtama3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         buttonMenuUtama3.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonMenuUtama3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
+        buttonMenuUtama3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/home-2.png"))); // NOI18N
         buttonMenuUtama3.setRoundRect(true);
         buttonMenuUtama3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 buttonMenuUtama3ActionPerformed(evt);
             }
         });
-        jPanel5.add(buttonMenuUtama3);
+        jPanel4.add(buttonMenuUtama3);
+
+        panelMenu.add(jPanel4, "menu3");
+
+        jPanel5.setOpaque(false);
+
+        buttonKembali2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
+        buttonKembali2.setText("Kembali");
+        buttonKembali2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonKembali2.setPreferredSize(new java.awt.Dimension(173, 41));
+        buttonKembali2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
+        buttonKembali2.setRoundRect(true);
+        buttonKembali2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonKembali2ActionPerformed(evt);
+            }
+        });
+        jPanel5.add(buttonKembali2);
 
         panelMenu.add(jPanel5, "menu4");
 
         jPanel6.setOpaque(false);
 
-        buttonMenuUtama4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
-        buttonMenuUtama4.setText("Kembali");
-        buttonMenuUtama4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonMenuUtama4.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonMenuUtama4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
-        buttonMenuUtama4.setRoundRect(true);
-        buttonMenuUtama4.addActionListener(new java.awt.event.ActionListener() {
+        buttonKembali3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
+        buttonKembali3.setText("Kembali");
+        buttonKembali3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonKembali3.setPreferredSize(new java.awt.Dimension(173, 41));
+        buttonKembali3.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
+        buttonKembali3.setRoundRect(true);
+        buttonKembali3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMenuUtama4ActionPerformed(evt);
+                buttonKembali3ActionPerformed(evt);
             }
         });
-        jPanel6.add(buttonMenuUtama4);
+        jPanel6.add(buttonKembali3);
 
         panelMenu.add(jPanel6, "menu6");
 
         jPanel7.setOpaque(false);
 
-        buttonMenuUtama6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
-        buttonMenuUtama6.setText("Kembali");
-        buttonMenuUtama6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        buttonMenuUtama6.setPreferredSize(new java.awt.Dimension(173, 41));
-        buttonMenuUtama6.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
-        buttonMenuUtama6.setRoundRect(true);
-        buttonMenuUtama6.addActionListener(new java.awt.event.ActionListener() {
+        buttonKembali4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-1.png"))); // NOI18N
+        buttonKembali4.setText("Kembali");
+        buttonKembali4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        buttonKembali4.setPreferredSize(new java.awt.Dimension(173, 41));
+        buttonKembali4.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back-2.png"))); // NOI18N
+        buttonKembali4.setRoundRect(true);
+        buttonKembali4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                buttonMenuUtama6ActionPerformed(evt);
+                buttonKembali4ActionPerformed(evt);
             }
         });
-        jPanel7.add(buttonMenuUtama6);
+        jPanel7.add(buttonKembali4);
 
         panelMenu.add(jPanel7, "menu7");
 
@@ -360,60 +349,60 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         add(iPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void buttonMenuUtamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtamaActionPerformed
-        frameMain.setPanel(new PanelMain(frameMain));
-    }//GEN-LAST:event_buttonMenuUtamaActionPerformed
-
     private void buttonMenuUtama1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama1ActionPerformed
-        frameMain.setPanel(new PanelMain(frameMain));
+        frameMain.setPanel(frameMain.getPanelMenuUtama());
     }//GEN-LAST:event_buttonMenuUtama1ActionPerformed
+
+    private void buttonKembali1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembali1ActionPerformed
+        buttonMenuUtama1ActionPerformed(evt);
+    }//GEN-LAST:event_buttonKembali1ActionPerformed
+
+    private void buttonMenuUtama3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama3ActionPerformed
+        buttonMenuUtama1ActionPerformed(evt);
+    }//GEN-LAST:event_buttonMenuUtama3ActionPerformed
+
+    private void buttonKembali2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembali2ActionPerformed
+        showPanel("card4");
+        showMenu("menu3");
+    }//GEN-LAST:event_buttonKembali2ActionPerformed
+
+    private void buttonAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdmin1ActionPerformed
+        panelAdmin.setData();
+        showPanel("card8");
+        showMenu("menu6");
+    }//GEN-LAST:event_buttonAdmin1ActionPerformed
+
+    private void buttonKembali3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembali3ActionPerformed
+        showPanel("card1");
+        showMenu("menu1");
+    }//GEN-LAST:event_buttonKembali3ActionPerformed
 
     private void buttonMenuUtama2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama2ActionPerformed
         buttonMenuUtama1ActionPerformed(evt);
     }//GEN-LAST:event_buttonMenuUtama2ActionPerformed
 
-    private void buttonMenuUtama3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama3ActionPerformed
-        showPanel("card4");
-        showMenu("menu3");
-    }//GEN-LAST:event_buttonMenuUtama3ActionPerformed
-
-    private void buttonAdminActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdminActionPerformed
-        panelAdmin.setData();
-        showPanel("card8");
-        showMenu("menu6");
-    }//GEN-LAST:event_buttonAdminActionPerformed
-
-    private void buttonMenuUtama4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama4ActionPerformed
-        showPanel("card1");
-        showMenu("menu1");
-    }//GEN-LAST:event_buttonMenuUtama4ActionPerformed
-
-    private void buttonMenuUtama5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama5ActionPerformed
-        buttonMenuUtamaActionPerformed(evt);
-    }//GEN-LAST:event_buttonMenuUtama5ActionPerformed
-
-    private void buttonAdmin1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdmin1ActionPerformed
+    private void buttonAdmin2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonAdmin2ActionPerformed
         panelAdmin.setData();
         showPanel("card8");
         showMenu("menu7");
-    }//GEN-LAST:event_buttonAdmin1ActionPerformed
+    }//GEN-LAST:event_buttonAdmin2ActionPerformed
 
-    private void buttonMenuUtama6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonMenuUtama6ActionPerformed
+    private void buttonKembali4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembali4ActionPerformed
         showPanel("card2");
         showMenu("menu11");
-    }//GEN-LAST:event_buttonMenuUtama6ActionPerformed
+    }//GEN-LAST:event_buttonKembali4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private sistem.pakar.component.IButton buttonAdmin;
     private sistem.pakar.component.IButton buttonAdmin1;
-    private sistem.pakar.component.IButton buttonMenuUtama;
+    private sistem.pakar.component.IButton buttonAdmin2;
+    private sistem.pakar.component.IButton buttonKembali1;
+    private sistem.pakar.component.IButton buttonKembali2;
+    private sistem.pakar.component.IButton buttonKembali3;
+    private sistem.pakar.component.IButton buttonKembali4;
     private sistem.pakar.component.IButton buttonMenuUtama1;
     private sistem.pakar.component.IButton buttonMenuUtama2;
     private sistem.pakar.component.IButton buttonMenuUtama3;
-    private sistem.pakar.component.IButton buttonMenuUtama4;
-    private sistem.pakar.component.IButton buttonMenuUtama5;
-    private sistem.pakar.component.IButton buttonMenuUtama6;
     private sistem.pakar.component.IPanel iPanel1;
     private sistem.pakar.component.IPanelBg iPanelBg1;
     private sistem.pakar.component.IPanelBg iPanelBg2;
@@ -443,20 +432,9 @@ public class PanelDiagnosa extends javax.swing.JPanel {
         return panelFuzzyfikazi;
     }
     
-    public PanelPredikatAturan getPanelPredikatAturan() {
-        return panelPredikatAturan;
-    }
     
     public PanelHasil getPanelHasil() {
         return panelHasil;
-    }
-    
-    public List<WeightAverage> getListRule() {
-        return listRule;
-    }
-    
-    public void setListRule(List<WeightAverage> listRule) {
-        this.listRule = listRule;
     }
     
     public PanelInferensi getPanelInferensi() {

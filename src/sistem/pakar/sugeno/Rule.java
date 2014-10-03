@@ -25,13 +25,10 @@ public class Rule {
     private boolean [] listGejalaBool4;
     private boolean [] listGejalaBool5;
     
-    private List<DerajatKeanggotaan> listKeanggotaans;
-
     private ArrayList<Double> rule;
     private ArrayList<Double> valueOutput;
 
     public Rule() {
-        listKeanggotaans = new ArrayList();
         rule = new ArrayList();
         valueOutput = new ArrayList();
         
@@ -51,7 +48,6 @@ public class Rule {
     public void rule1() {
         rule = new ArrayList();
         valueOutput = new ArrayList();
-        
 
         /*000*/valueOutput.add(2.0); rule.add(minValue1(listGejala1[0][0], listGejala1[1][0], listGejala1[2][0], listGejala1[3][0], listGejala1[4][0]));
         /*001*/valueOutput.add(2.0); rule.add(minValue1(listGejala1[0][0], listGejala1[1][0], listGejala1[2][0], listGejala1[3][0], listGejala1[4][1]));
@@ -638,60 +634,6 @@ public class Rule {
         rule = new ArrayList();
         valueOutput = new ArrayList();
         
-        /*567*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][0]));
-        /*568*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][1]));
-        /*569*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][2]));
-        /*570*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][1], listGejala4[2][0]));
-        /*571*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][1], listGejala4[2][1]));
-        /*572*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][1], listGejala4[2][2]));
-        /*573*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][2], listGejala4[2][0]));
-        /*574*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][2], listGejala4[2][1]));
-        /*575*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][2], listGejala4[2][2]));
-        /*576*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][0], listGejala4[2][0]));
-        /*577*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][0], listGejala4[2][1]));
-        /*578*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][0], listGejala4[2][2]));
-        /*579*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][1], listGejala4[2][0]));
-        /*580*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][1], listGejala4[2][1]));
-        /*581*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][1], listGejala4[2][2]));
-        /*582*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][2], listGejala4[2][0]));
-        /*583*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][2], listGejala4[2][1]));
-        /*584*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][2], listGejala4[2][2]));
-        /*585*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][0], listGejala4[2][0]));
-        /*586*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][0], listGejala4[2][1]));
-        /*587*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][0], listGejala4[2][2]));
-        /*588*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][1], listGejala4[2][0]));
-        /*589*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][1], listGejala4[2][1]));
-        /*590*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][1], listGejala4[2][2]));
-        /*591*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][2], listGejala4[2][0]));
-        /*592*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][2], listGejala4[2][1]));
-        /*593*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][2], listGejala4[2][2]));
-        /*567*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][0]));
-        /*568*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][1]));
-        /*569*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][2]));
-        /*570*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][1], listGejala4[2][0]));
-        /*571*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][1], listGejala4[2][1]));
-        /*572*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][1], listGejala4[2][2]));
-        /*573*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][2], listGejala4[2][0]));
-        /*574*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][2], listGejala4[2][1]));
-        /*575*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][2], listGejala4[2][2]));
-        /*576*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][0], listGejala4[2][0]));
-        /*577*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][0], listGejala4[2][1]));
-        /*578*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][0], listGejala4[2][2]));
-        /*579*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][1], listGejala4[2][0]));
-        /*580*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][1], listGejala4[2][1]));
-        /*581*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][1], listGejala4[2][2]));
-        /*582*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][2], listGejala4[2][0]));
-        /*583*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][2], listGejala4[2][1]));
-        /*584*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][1], listGejala4[1][2], listGejala4[2][2]));
-        /*585*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][0], listGejala4[2][0]));
-        /*586*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][0], listGejala4[2][1]));
-        /*587*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][0], listGejala4[2][2]));
-        /*588*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][1], listGejala4[2][0]));
-        /*589*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][1], listGejala4[2][1]));
-        /*590*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][1], listGejala4[2][2]));
-        /*591*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][2], listGejala4[2][0]));
-        /*592*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][2], listGejala4[2][1]));
-        /*593*/valueOutput.add(8.0); rule.add(minValue4(listGejala4[0][2], listGejala4[1][2], listGejala4[2][2]));
         /*567*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][0]));
         /*568*/valueOutput.add(2.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][1]));
         /*569*/valueOutput.add(5.0); rule.add(minValue4(listGejala4[0][0], listGejala4[1][0], listGejala4[2][2]));
@@ -1642,14 +1584,5 @@ public class Rule {
     public ArrayList<Double> getValueOutput() {
         return valueOutput;
     }
-
-    public List<DerajatKeanggotaan> getListKeanggotaans() {
-        return listKeanggotaans;
-    }
-
-    public void setListKeanggotaans(List<DerajatKeanggotaan> listKeanggotaans) {
-        this.listKeanggotaans = listKeanggotaans;
-    }
-
     
 }

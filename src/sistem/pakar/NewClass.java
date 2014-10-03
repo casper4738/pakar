@@ -1238,7 +1238,7 @@ public class NewClass {
 
     public static void main(String[] args) {
         NewClass main = new NewClass();
-        main.gejala6();
+        main.gejala3();
 
 //        DecimalFormat format = new DecimalFormat("#0000");
 //        int a1=594;

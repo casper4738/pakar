@@ -4,22 +4,20 @@
  */
 package sistem.pakar.view;
 
-import java.awt.Component;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableCellRenderer;
-import sistem.pakar.sugeno.inferensi.Perilaku;
 import sistem.pakar.component.TableModelIntensitas;
 import sistem.pakar.sugeno.Defuzzyfikasi;
-import sistem.pakar.sugeno.DerajatKeanggotaan;
+import sistem.pakar.sugeno.Fuzzyfikasi;
 import sistem.pakar.sugeno.Gejala;
 import sistem.pakar.sugeno.Rule;
 import sistem.pakar.sugeno.WeightAverage;
 import sistem.pakar.sugeno.inferensi.IntensitasGejala;
+import sistem.pakar.sugeno.inferensi.Perilaku;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 
 /**
@@ -33,13 +31,10 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
      */
     private TableModelIntensitas tableModel;
     private PanelDiagnosa panelDiagnosa;
-    private FrameMain frameMain;
 
-    public PanelNilaiIntesitas(FrameMain frameMain, PanelDiagnosa panelDiagnosa) {
+    public PanelNilaiIntesitas(PanelDiagnosa panelDiagnosa) {
         initComponents();
-        this.frameMain = frameMain;
         this.panelDiagnosa = panelDiagnosa;
-
         tableModel = new TableModelIntensitas();
         table.setRowHeight(25);
     }
@@ -89,9 +84,9 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        buttonProses = new javax.swing.JButton();
+        buttonReset = new javax.swing.JButton();
+        buttonKembali = new javax.swing.JButton();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -112,35 +107,35 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
 
         jPanel2.setOpaque(false);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/process.png"))); // NOI18N
-        jButton3.setText("Proses");
-        jButton3.setPreferredSize(new java.awt.Dimension(120, 35));
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/process.png"))); // NOI18N
+        buttonProses.setText("Proses");
+        buttonProses.setPreferredSize(new java.awt.Dimension(120, 35));
+        buttonProses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                buttonProsesActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton3);
+        jPanel2.add(buttonProses);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
-        jButton4.setText("Reset");
-        jButton4.setPreferredSize(new java.awt.Dimension(120, 35));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
+        buttonReset.setText("Reset");
+        buttonReset.setPreferredSize(new java.awt.Dimension(120, 35));
+        buttonReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buttonResetActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton4);
+        jPanel2.add(buttonReset);
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back.png"))); // NOI18N
-        jButton5.setText("Kembali");
-        jButton5.setPreferredSize(new java.awt.Dimension(120, 35));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        buttonKembali.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/back.png"))); // NOI18N
+        buttonKembali.setText("Kembali");
+        buttonKembali.setPreferredSize(new java.awt.Dimension(120, 35));
+        buttonKembali.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                buttonKembaliActionPerformed(evt);
             }
         });
-        jPanel2.add(jButton5);
+        jPanel2.add(buttonKembali);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -167,8 +162,8 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        List<DerajatKeanggotaan> listKeanggotaans = new ArrayList<>();
+    private void buttonProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProsesActionPerformed
+        List<Fuzzyfikasi> listFuzzyfikasis = new ArrayList<>();
 
         double[][] listGejala1 = new double[5][3];
         double[][] listGejala2 = new double[5][3];
@@ -183,7 +178,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         boolean[] listBool5 = {false, false, false, false, false, false};
 
         for (Gejala e : tableModel.getList()) {
-            DerajatKeanggotaan keanggotaan = new DerajatKeanggotaan();
+            Fuzzyfikasi keanggotaan = new Fuzzyfikasi();
             keanggotaan.setKode(e.getKode());
             keanggotaan.setGejala(e.getGejala());
             keanggotaan.setKodeGangguan(e.getKodeGangguan());
@@ -192,109 +187,112 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             keanggotaan.setValue(e.getValue());
             keanggotaan.setSelected(e.isSelected());
 
-            keanggotaan.setRingan(IntensitasGejala.getKeanggotaanJarang(e.getValue()));
+            keanggotaan.setJarang(IntensitasGejala.getKeanggotaanJarang(e.getValue()));
             keanggotaan.setSedang(IntensitasGejala.getKeanggotaanSering(e.getValue()));
-            keanggotaan.setBerat(IntensitasGejala.getKeanggotaanHampirSelalu(e.getValue()));
-            listKeanggotaans.add(keanggotaan);
+            keanggotaan.setSering(IntensitasGejala.getKeanggotaanHampirSelalu(e.getValue()));
+            listFuzzyfikasis.add(keanggotaan);
         }
 
-        for (DerajatKeanggotaan e : listKeanggotaans) {
-            if (e.getKodeGangguan().equals("P1")) {
-                listGejala1[e.getNumber()][0] = e.getRingan();
-                listGejala1[e.getNumber()][1] = e.getSedang();
-                listGejala1[e.getNumber()][2] = e.getBerat();
-
-                if (e.getKode().equals("G01")) {
-                    listBool1[0] = true;
-                }
-                if (e.getKode().equals("G02")) {
-                    listBool1[1] = true;
-                }
-                if (e.getKode().equals("G03")) {
-                    listBool1[2] = true;
-                }
-                if (e.getKode().equals("G04")) {
-                    listBool1[3] = true;
-                }
-                if (e.getKode().equals("G05")) {
-                    listBool1[4] = true;
-                }
-            } else if (e.getKodeGangguan().equals("P2")) {
-                listGejala2[e.getNumber()][0] = e.getRingan();
-                listGejala2[e.getNumber()][1] = e.getSedang();
-                listGejala2[e.getNumber()][2] = e.getBerat();
-                if (e.getKode().equals("G06")) {
-                    listBool2[0] = true;
-                }
-                if (e.getKode().equals("G07")) {
-                    listBool2[1] = true;
-                }
-                if (e.getKode().equals("G08")) {
-                    listBool2[2] = true;
-                }
-                if (e.getKode().equals("G09")) {
-                    listBool2[3] = true;
-                }
-                if (e.getKode().equals("G10")) {
-                    listBool2[4] = true;
-                }
-            } else if (e.getKodeGangguan().equals("P3")) {
-                listGejala3[e.getNumber()][0] = e.getRingan();
-                listGejala3[e.getNumber()][1] = e.getSedang();
-                listGejala3[e.getNumber()][2] = e.getBerat();
-                if (e.getKode().equals("G11")) {
-                    listBool3[0] = true;
-                }
-                if (e.getKode().equals("G12")) {
-                    listBool3[1] = true;
-                }
-                if (e.getKode().equals("G13")) {
-                    listBool3[2] = true;
-                }
-                if (e.getKode().equals("G14")) {
-                    listBool3[3] = true;
-                }
-            } else if (e.getKodeGangguan().equals("P4")) {
-                listGejala4[e.getNumber()][0] = e.getRingan();
-                listGejala4[e.getNumber()][1] = e.getSedang();
-                listGejala4[e.getNumber()][2] = e.getBerat();
-                if (e.getKode().equals("G15")) {
-                    listBool4[0] = true;
-                }
-                if (e.getKode().equals("G16")) {
-                    listBool4[1] = true;
-                }
-                if (e.getKode().equals("G17")) {
-                    listBool4[2] = true;
-                }
-            } else if (e.getKodeGangguan().equals("P5")) {
-                listGejala5[e.getNumber()][0] = e.getRingan();
-                listGejala5[e.getNumber()][1] = e.getSedang();
-                listGejala5[e.getNumber()][2] = e.getBerat();
-                if (e.getKode().equals("G18")) {
-                    listBool5[0] = true;
-                }
-                if (e.getKode().equals("G19")) {
-                    listBool5[1] = true;
-                }
-                if (e.getKode().equals("G20")) {
-                    listBool5[2] = true;
-                }
-                if (e.getKode().equals("G21")) {
-                    listBool5[3] = true;
-                }
-                if (e.getKode().equals("G22")) {
-                    listBool5[4] = true;
-                }
-                if (e.getKode().equals("G23")) {
-                    listBool5[5] = true;
-                }
+        for (Fuzzyfikasi e : listFuzzyfikasis) {
+            switch (e.getKodeGangguan()) {
+                case "P1":
+                    listGejala1[e.getNumber()][0] = e.getJarang();
+                    listGejala1[e.getNumber()][1] = e.getSedang();
+                    listGejala1[e.getNumber()][2] = e.getSering();
+                    if (e.getKode().equals("G01")) {
+                        listBool1[0] = true;
+                    }
+                    if (e.getKode().equals("G02")) {
+                        listBool1[1] = true;
+                    }
+                    if (e.getKode().equals("G03")) {
+                        listBool1[2] = true;
+                    }
+                    if (e.getKode().equals("G04")) {
+                        listBool1[3] = true;
+                    }
+                    if (e.getKode().equals("G05")) {
+                        listBool1[4] = true;
+                    }
+                    break;
+                case "P2":
+                    listGejala2[e.getNumber()][0] = e.getJarang();
+                    listGejala2[e.getNumber()][1] = e.getSedang();
+                    listGejala2[e.getNumber()][2] = e.getSering();
+                    if (e.getKode().equals("G06")) {
+                        listBool2[0] = true;
+                    }
+                    if (e.getKode().equals("G07")) {
+                        listBool2[1] = true;
+                    }
+                    if (e.getKode().equals("G08")) {
+                        listBool2[2] = true;
+                    }
+                    if (e.getKode().equals("G09")) {
+                        listBool2[3] = true;
+                    }
+                    if (e.getKode().equals("G10")) {
+                        listBool2[4] = true;
+                    }
+                    break;
+                case "P3":
+                    listGejala3[e.getNumber()][0] = e.getJarang();
+                    listGejala3[e.getNumber()][1] = e.getSedang();
+                    listGejala3[e.getNumber()][2] = e.getSering();
+                    if (e.getKode().equals("G11")) {
+                        listBool3[0] = true;
+                    }
+                    if (e.getKode().equals("G12")) {
+                        listBool3[1] = true;
+                    }
+                    if (e.getKode().equals("G13")) {
+                        listBool3[2] = true;
+                    }
+                    if (e.getKode().equals("G14")) {
+                        listBool3[3] = true;
+                    }
+                    break;
+                case "P4":
+                    listGejala4[e.getNumber()][0] = e.getJarang();
+                    listGejala4[e.getNumber()][1] = e.getSedang();
+                    listGejala4[e.getNumber()][2] = e.getSering();
+                    if (e.getKode().equals("G15")) {
+                        listBool4[0] = true;
+                    }
+                    if (e.getKode().equals("G16")) {
+                        listBool4[1] = true;
+                    }
+                    if (e.getKode().equals("G17")) {
+                        listBool4[2] = true;
+                    }
+                    break;
+                case "P5":
+                    listGejala5[e.getNumber()][0] = e.getJarang();
+                    listGejala5[e.getNumber()][1] = e.getSedang();
+                    listGejala5[e.getNumber()][2] = e.getSering();
+                    if (e.getKode().equals("G18")) {
+                        listBool5[0] = true;
+                    }
+                    if (e.getKode().equals("G19")) {
+                        listBool5[1] = true;
+                    }
+                    if (e.getKode().equals("G20")) {
+                        listBool5[2] = true;
+                    }
+                    if (e.getKode().equals("G21")) {
+                        listBool5[3] = true;
+                    }
+                    if (e.getKode().equals("G22")) {
+                        listBool5[4] = true;
+                    }
+                    if (e.getKode().equals("G23")) {
+                        listBool5[5] = true;
+                    }
+                    break;
             }
         }
 
-        Rule rule = frameMain.getRule();
-        rule.setListKeanggotaans(listKeanggotaans);
-
+        Rule rule = new Rule();
         rule.setListGejala1(listGejala1);
         rule.setListGejala2(listGejala2);
         rule.setListGejala3(listGejala3);
@@ -313,7 +311,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         perilaku.perilaku3();
         perilaku.perilaku4();
         perilaku.perilaku5();
-        
+
         List<WeightAverage> list = new ArrayList<>();
         List<WeightAverage> vlist = perilaku.getList();
 
@@ -326,17 +324,18 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[0] = d.getWeightAverage();
-
+            int t = 0;
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
-                    int vx = 1 + i;
+                    int vx = 0 + i;
                     WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
                     list.add(wax);
+                    t++;
                 }
             }
-
+            System.out.println("PERILAKU 1 :" + t);
         } catch (Exception e) {
         }
         try {
@@ -346,16 +345,18 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[1] = d.getWeightAverage();
-
+            int t = 0;
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
-                    int vx = 244 + i;
+                    int vx = 243 + i;
                     WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
                     list.add(wax);
+                    t++;
                 }
             }
+            System.out.println("PERILAKU 2 :" + t);
         } catch (Exception e) {
         }
         try {
@@ -365,16 +366,18 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[2] = d.getWeightAverage();
-
+            int t = 0;
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
-                    int vx = 487 + i;
+                    int vx = 486 + i;
                     WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
                     list.add(wax);
+                    t++;
                 }
             }
+            System.out.println("PERILAKU 3 :" + t);
         } catch (Exception e) {
         }
 
@@ -385,18 +388,21 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[3] = d.getWeightAverage();
-
+            int t = 0;
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
-                    int vx = 568 + i;
+                    int vx = 567 + i;
                     WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
                     list.add(wax);
+                    t++;
                 }
             }
+            System.out.println("PERILAKU 4 :" + t);
         } catch (Exception e) {
         }
+
         try {
             rule.rule5();
             List<WeightAverage> listWA = new ArrayList<>();
@@ -404,52 +410,52 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             List<Double> list2 = rule.getValueOutput();
             d.calcWeightAverage(list1, list2);
             wa[4] = d.getWeightAverage();
-
+            int t = 0;
             for (int i = 0; i < list1.size(); i++) {
                 if (list1.get(i) != 0) {
-                    int vx = 595 + i;
+                    int vx = 594 + i;
                     WeightAverage wax = vlist.get(vx);
                     wax.setPredikatAturan(list1.get(i));
                     wax.setNilaiOutput(list2.get(i));
                     list.add(wax);
+                    t++;
                 }
             }
-
+            System.out.println("PERILAKU 5 :" + t);
+            System.out.println("===============================================");
         } catch (Exception e) {
         }
 
-        panelDiagnosa.setListRule(list);
         panelDiagnosa.showPanel("card4");
         panelDiagnosa.showMenu("menu3");
-        panelDiagnosa.getPanelFuzzyfikazi().setData();
-        panelDiagnosa.getPanelInferensi().setData();
+        panelDiagnosa.getPanelFuzzyfikazi().setData(listFuzzyfikasis);
+        panelDiagnosa.getPanelInferensi().setData(list);
         panelDiagnosa.getPanelDeffuzyfikasi().setData(wa);
         panelDiagnosa.getPanelHasil().setHasilDiagnosa(wa);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_buttonProsesActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed
         for (int i = 0; i < tableModel.getRowCount(); i++) {
             Gejala e = tableModel.get(i);
             e.setSelected(false);
             tableModel.update(i, e);
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_buttonResetActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void buttonKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonKembaliActionPerformed
         panelDiagnosa.showMenu("menu1");
         panelDiagnosa.showPanel("card1");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_buttonKembaliActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton buttonKembali;
+    private javax.swing.JButton buttonProses;
+    private javax.swing.JButton buttonReset;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
-    
 
 }

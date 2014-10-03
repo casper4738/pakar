@@ -24,15 +24,12 @@ public class PanelGejala extends javax.swing.JPanel {
     /**
      * Creates new form PanelNilaiDerajatKeanggotaan
      */
-    private FrameMain frameMain;
     private PanelDiagnosa panelDiagnosa;
     private TableModelGejala tableModel;
 
-    public PanelGejala(FrameMain frameMain, PanelDiagnosa panelDiagnosa) {
+    public PanelGejala(PanelDiagnosa panelDiagnosa) {
         initComponents();
-        this.frameMain = frameMain;
         this.panelDiagnosa = panelDiagnosa;
-
         tableModel = new TableModelGejala();
 
         Perilaku perilaku = new Perilaku();
@@ -69,8 +66,8 @@ public class PanelGejala extends javax.swing.JPanel {
         table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        buttonProses = new javax.swing.JButton();
+        buttonReset = new javax.swing.JButton();
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -91,25 +88,25 @@ public class PanelGejala extends javax.swing.JPanel {
 
         jPanel1.setOpaque(false);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/process.png"))); // NOI18N
-        jButton2.setText("Proses");
-        jButton2.setPreferredSize(new java.awt.Dimension(120, 35));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        buttonProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/process.png"))); // NOI18N
+        buttonProses.setText("Proses");
+        buttonProses.setPreferredSize(new java.awt.Dimension(120, 35));
+        buttonProses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                buttonProsesActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton2);
+        jPanel1.add(buttonProses);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
-        jButton1.setText("Reset");
-        jButton1.setPreferredSize(new java.awt.Dimension(120, 35));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        buttonReset.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
+        buttonReset.setText("Reset");
+        buttonReset.setPreferredSize(new java.awt.Dimension(120, 35));
+        buttonReset.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                buttonResetActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(buttonReset);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -136,7 +133,7 @@ public class PanelGejala extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void buttonProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProsesActionPerformed
         int jumlah = 0;
         for (Gejala e : tableModel.getList()) {
             if (e.isSelected()) {
@@ -145,24 +142,22 @@ public class PanelGejala extends javax.swing.JPanel {
         }
 
         if (jumlah == 0) {
-            JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
-            return;
-        } else if (jumlah <= 1) {
-            JOptionPane.showMessageDialog(frameMain, "silakan memilih gejala lebih dari satu", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(panelDiagnosa, "silakan memilih gejala terlebih dahulu ", "SISTEM PAKAR", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
+        
         panelDiagnosa.getPanelNilaiIntesitas().setData(tableModel.getList());
         panelDiagnosa.showPanel("card2");
         panelDiagnosa.showMenu("menu11");
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_buttonProsesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed
         for (int i = 0; i < tableModel.getRowCount(); i++) {
             Gejala e = tableModel.get(i);
             e.setSelected(false);
             tableModel.update(i, e);
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_buttonResetActionPerformed
 
     public List<Gejala> getList() {
         return tableModel.getList();
@@ -170,8 +165,8 @@ public class PanelGejala extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    private javax.swing.JButton buttonProses;
+    private javax.swing.JButton buttonReset;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;

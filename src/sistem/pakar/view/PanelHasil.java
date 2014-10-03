@@ -4,10 +4,10 @@
  */
 package sistem.pakar.view;
 
-import sistem.pakar.sugeno.Saran;
 import java.text.DecimalFormat;
 import javax.swing.JLabel;
 import javax.swing.JTable;
+import sistem.pakar.sugeno.Saran;
 import swingx.component.table.renderer.TableCellColorAlignmentRenderer;
 
 /**
@@ -20,11 +20,9 @@ public class PanelHasil extends javax.swing.JPanel {
      * Creates new form PanelHasil
      */
     private PanelDiagnosa panelDiagnosa;
-    private FrameMain frameMain;
 
-    public PanelHasil(FrameMain frameMain, PanelDiagnosa panelDiagnosa) {
+    public PanelHasil(PanelDiagnosa panelDiagnosa) {
         initComponents();
-        this.frameMain = frameMain;
         this.panelDiagnosa = panelDiagnosa;
         setOpaque(false);
         table.setRowHeight(25);
@@ -74,7 +72,7 @@ public class PanelHasil extends javax.swing.JPanel {
         int x = 0;
         for (int i = 0; i < wa.length; i++) {
             for (int j = i; j < wa.length; j++) {
-                if (new Double(getValue(wa[x])+"") <= new Double(getValue(wa[j])+"")) {
+                if (new Double(getValue(wa[x]) + "") <= new Double(getValue(wa[j]) + "")) {
                     x = j;
                 }
             }
@@ -90,11 +88,11 @@ public class PanelHasil extends javax.swing.JPanel {
                     string2 = string2 + " " + Saran.saran[i][0];
                 } else {
                     if (object[i][2].equals("RINGAN")) {
-                        string2 = string2 + object[i][0]+"\n " + Saran.saran[i][0]+"\n\n\n";
+                        string2 = string2 + object[i][0] + "\n " + Saran.saran[i][0] + "\n\n\n";
                     } else if (object[i][2].equals("SEDANG")) {
-                        string2 = string2 + object[i][0]+"\n " + Saran.saran[i][1]+"\n\n\n";
+                        string2 = string2 + object[i][0] + "\n " + Saran.saran[i][1] + "\n\n\n";
                     } else if (object[i][2].equals("BERAT")) {
-                        string2 = string2 + object[i][0]+"\n " + Saran.saran[i][2]+"\n\n\n";
+                        string2 = string2 + object[i][0] + "\n " + Saran.saran[i][2] + "\n\n\n";
                     }
                 }
             }
@@ -127,11 +125,11 @@ public class PanelHasil extends javax.swing.JPanel {
     }
 
     private String output(double x) {
-        if (x > 0 && x <= 3.5) {
+        if (x > 0 && x <= 4.4) {
             return "RINGAN";
-        } else if (x > 3.5 && x <= 6.5) {
+        } else if (x > 4.4 && x < 7.7) {
             return "SEDANG";
-        } else if (x > 6.5 && x <= 10) {
+        } else if (x >= 7.7) {
             return "BERAT";
         } else {
             return "";
@@ -307,11 +305,11 @@ public class PanelHasil extends javax.swing.JPanel {
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         panelDiagnosa.showPanel("card3");
         panelDiagnosa.showMenu("menu4");
-        panelDiagnosa.getPanelFuzzyfikazi().setData();
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        frameMain.setPanel(new PanelMain(frameMain));
+        panelDiagnosa.showPanel("card2");
+        panelDiagnosa.showMenu("menu11");
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
