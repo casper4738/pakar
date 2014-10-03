@@ -157,9 +157,9 @@ public class PanelHasil extends javax.swing.JPanel {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         iPanelBorder2 = new sistem.pakar.component.IPanelBorder();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        buttonPrint = new javax.swing.JButton();
+        buttonProses = new javax.swing.JButton();
+        buttonBatal = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -255,35 +255,35 @@ public class PanelHasil extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/stock_print.png"))); // NOI18N
-        jButton5.setText("Print");
-        jButton5.setPreferredSize(new java.awt.Dimension(120, 35));
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        buttonPrint.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/stock_print.png"))); // NOI18N
+        buttonPrint.setText("Print");
+        buttonPrint.setPreferredSize(new java.awt.Dimension(120, 35));
+        buttonPrint.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                buttonPrintActionPerformed(evt);
             }
         });
-        iPanelBorder2.add(jButton5);
+        iPanelBorder2.add(buttonPrint);
 
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/process.png"))); // NOI18N
-        jButton3.setText("Tampilkan Proses");
-        jButton3.setPreferredSize(null);
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        buttonProses.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/process.png"))); // NOI18N
+        buttonProses.setText("Tampilkan Proses");
+        buttonProses.setPreferredSize(null);
+        buttonProses.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                buttonProsesActionPerformed(evt);
             }
         });
-        iPanelBorder2.add(jButton3);
+        iPanelBorder2.add(buttonProses);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
-        jButton4.setText("Batal");
-        jButton4.setPreferredSize(new java.awt.Dimension(120, 35));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        buttonBatal.setIcon(new javax.swing.ImageIcon(getClass().getResource("/sistem/pakar/resources/undo.png"))); // NOI18N
+        buttonBatal.setText("Batal");
+        buttonBatal.setPreferredSize(new java.awt.Dimension(120, 35));
+        buttonBatal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                buttonBatalActionPerformed(evt);
             }
         });
-        iPanelBorder2.add(jButton4);
+        iPanelBorder2.add(buttonBatal);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -302,28 +302,28 @@ public class PanelHasil extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void buttonProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProsesActionPerformed
         panelDiagnosa.showPanel("card3");
         panelDiagnosa.showMenu("menu4");
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_buttonProsesActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void buttonBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonBatalActionPerformed
         panelDiagnosa.showPanel("card2");
         panelDiagnosa.showMenu("menu11");
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_buttonBatalActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void buttonPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPrintActionPerformed
         panelDiagnosa.showPanel("card5");
         panelDiagnosa.showMenu("menu3");
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_buttonPrintActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton buttonBatal;
+    private javax.swing.JButton buttonPrint;
+    private javax.swing.JButton buttonProses;
     private sistem.pakar.component.IPanelBorder iPanelBorder1;
     private sistem.pakar.component.IPanelBorder iPanelBorder2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
