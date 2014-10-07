@@ -1,6 +1,7 @@
 
-package sistem.pakar.sugeno.inferensi;
 
+
+import sistem.pakar.sugeno.inferensi.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +17,7 @@ public class Perilaku {
     public static void main(String[] args) {
 
         Perilaku tes = new Perilaku();
-        tes.perilaku1();
-        tes.perilaku2();
-        tes.perilaku3();
         tes.perilaku4();
-        tes.perilaku5();
 
 //        String string = "A  B";
 //        System.out.println(tes.getSumString(string, "B"));
@@ -93,8 +90,7 @@ public class Perilaku {
                                     + listCiri[0].get(2).getGejala() + " " + kategori[k] + " ; "
                                     + listCiri[0].get(3).getGejala() + " " + kategori[l] + " ; "
                                     + listCiri[0].get(4).getGejala() + " " + kategori[m] + " ; ");
-                            wa.setThen(jenisGangguans[0].getJenis() + " " + thenGejala5(getSumString(wa.getRule(), "JARANG") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "SERING")));
-//                            System.out.println(x+"|"+wa.getRule()+"-");
+                            wa.setThen(jenisGangguans[0].getJenis() + " " + thenGejala5(getSumString(wa.getRule(), "RINGAN") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "BERAT")));
                             list.add(wa);
                             x++;
                         }
@@ -117,8 +113,7 @@ public class Perilaku {
                                     + listCiri[1].get(2).getGejala() + " " + kategori[k] + " ; "
                                     + listCiri[1].get(3).getGejala() + " " + kategori[l] + " ; "
                                     + listCiri[1].get(4).getGejala() + " " + kategori[m] + " ; ");
-                            wa.setThen(jenisGangguans[1].getJenis() + " " + thenGejala5(getSumString(wa.getRule(), "JARANG") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "SERING")));
-//                            System.out.println(x+"|"+wa.getRule()+"-"+wa.getThen());
+                            wa.setThen(jenisGangguans[1].getJenis() + " " + thenGejala5(getSumString(wa.getRule(), "RINGAN") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "BERAT")));
                             list.add(wa);
                             x++;
                         }
@@ -138,10 +133,8 @@ public class Perilaku {
                         wa.setRule(listCiri[2].get(0).getGejala() + " " + kategori[i] + " ; "
                                 + listCiri[2].get(1).getGejala() + " " + kategori[j] + " ; "
                                 + listCiri[2].get(2).getGejala() + " " + kategori[k] + " ; "
-                                + listCiri[2].get(3).getGejala() + " " + kategori[l] + " ; ");
-                        wa.setThen(jenisGangguans[2].getJenis() + " " + thenGejala4(getSumString(wa.getRule(), "JARANG") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "SERING")));
-//                        System.out.println(x+"|"+wa.getRule()+"-"+wa.getThen());
-//                        System.out.println(x+"|"+kategori[i]+"-"+kategori[j]+"-"+kategori[k]+"-"+kategori[l]+"||"+ getSumString(wa.getRule(), "SEDANG")+"||"+thenGejala4(getSumString(wa.getRule(), "JARANG") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "SERING")));
+                                + listCiri[2].get(3).getGejala() + " " + kategori[k] + " ; ");
+                        wa.setThen(jenisGangguans[2].getJenis() + " " + thenGejala4(getSumString(wa.getRule(), "RINGAN") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "BERAT")));
                         list.add(wa);
                         x++;
                     }
@@ -160,8 +153,8 @@ public class Perilaku {
                     wa.setRule(listCiri[3].get(0).getGejala() + " " + kategori[i] + " ; "
                             + listCiri[3].get(1).getGejala() + " " + kategori[j] + " ; "
                             + listCiri[3].get(2).getGejala() + " " + kategori[k] + " ; ");
-                    wa.setThen(jenisGangguans[3].getJenis() + " " + thenGejala3(getSumString(wa.getRule(), "JARANG") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "SERING")));
-//                    System.out.println(x+"|"+wa.getRule()+"-"+wa.getThen());
+                    wa.setThen(jenisGangguans[3].getJenis() + " " + thenGejala3(getSumString(wa.getRule(), "RINGAN") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "BERAT")));
+//                    System.out.println(x+"|"+wa.getRule());
                     list.add(wa);
                     x++;
                 }
@@ -184,8 +177,7 @@ public class Perilaku {
                                         + listCiri[4].get(3).getGejala() + " " + kategori[l] + " ; "
                                         + listCiri[4].get(4).getGejala() + " " + kategori[m] + " ; "
                                         + listCiri[4].get(5).getGejala() + " " + kategori[n] + " ; ");
-                                wa.setThen(jenisGangguans[4].getJenis() + " " + thenGejala6(getSumString(wa.getRule(), "JARANG") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "SERING")));
-//                                System.out.println(x+"|"+wa.getRule()+"-"+wa.getThen());
+                                wa.setThen(jenisGangguans[4].getJenis() + " " + thenGejala6(getSumString(wa.getRule(), "RINGAN") + ";" + getSumString(wa.getRule(), "SEDANG") + ";" + getSumString(wa.getRule(), "BERAT")));
                                 list.add(wa);
                                 x++;
                             }

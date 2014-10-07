@@ -24,58 +24,58 @@ public class Defuzzyfikasi {
 
         double[][] listGejala = new double[5][3];
         listGejala[0][0] = IntensitasGejala.getKeanggotaanJarang(value[0]);
-        listGejala[0][1] = IntensitasGejala.getKeanggotaanSering(value[0]);
-        listGejala[0][2] = IntensitasGejala.getKeanggotaanHampirSelalu(value[0]);
+        listGejala[0][1] = IntensitasGejala.getKeanggotaanSedang(value[0]);
+        listGejala[0][2] = IntensitasGejala.getKeanggotaanSering(value[0]);
 
         listGejala[1][0] = IntensitasGejala.getKeanggotaanJarang(value[1]);
-        listGejala[1][1] = IntensitasGejala.getKeanggotaanSering(value[1]);
-        listGejala[1][2] = IntensitasGejala.getKeanggotaanHampirSelalu(value[1]);
+        listGejala[1][1] = IntensitasGejala.getKeanggotaanSedang(value[1]);
+        listGejala[1][2] = IntensitasGejala.getKeanggotaanSering(value[1]);
 
         listGejala[2][0] = IntensitasGejala.getKeanggotaanJarang(value[1]);
-        listGejala[2][1] = IntensitasGejala.getKeanggotaanSering(value[1]);
-        listGejala[2][2] = IntensitasGejala.getKeanggotaanHampirSelalu(value[1]);
+        listGejala[2][1] = IntensitasGejala.getKeanggotaanSedang(value[1]);
+        listGejala[2][2] = IntensitasGejala.getKeanggotaanSering(value[1]);
 
         listGejala[3][0] = IntensitasGejala.getKeanggotaanJarang(value[1]);
-        listGejala[3][1] = IntensitasGejala.getKeanggotaanSering(value[1]);
-        listGejala[3][2] = IntensitasGejala.getKeanggotaanHampirSelalu(value[1]);
+        listGejala[3][1] = IntensitasGejala.getKeanggotaanSedang(value[1]);
+        listGejala[3][2] = IntensitasGejala.getKeanggotaanSering(value[1]);
 
         listGejala[4][0] = IntensitasGejala.getKeanggotaanJarang(value[1]);
-        listGejala[4][1] = IntensitasGejala.getKeanggotaanSering(value[1]);
-        listGejala[4][2] = IntensitasGejala.getKeanggotaanHampirSelalu(value[1]);
-
-        Rule rule = new Rule();
-        rule.setListGejala1(listGejala);
-        rule.setListGejalaBool1(bool);
-        rule.rule1();
-        rule.rule2();
-        rule.rule3();
-        rule.rule4();
-        rule.rule5();
-
-        List<WeightAverage> listWA = new ArrayList<>();
-        List<Double> list1 = rule.getRule();
-        List<Double> list2 = rule.getValueOutput();
-        for (int i = 0; i < list1.size(); i++) {
-            if (list1.get(i) != 0) {
-
-                System.out.print(i + ":" + list1.get(i));
-                System.out.print(" | " + list2.get(i));
-                System.out.println();
-//                
-                WeightAverage wa = new WeightAverage();
-                wa.setKode("R" + (i + 1));
-                wa.setPredikatAturan(list1.get(i));
-                wa.setNilaiOutput(list2.get(i));
-                wa.setRule("RULE " + (i + 1));
-                listWA.add(wa);
-            }
-        }
-
-        Defuzzyfikasi d = new Defuzzyfikasi();
-        d.calcWeightAverage(list1, list2);
-
-        System.out.println("x : " + listWA.size());
-        System.out.println("WA : " + d.getWeightAverage());
+        listGejala[4][1] = IntensitasGejala.getKeanggotaanSedang(value[1]);
+        listGejala[4][2] = IntensitasGejala.getKeanggotaanSering(value[1]);
+//
+//        Rule rule = new Rule();
+//        rule.setListGejala1(listGejala);
+//        rule.setListGejalaBool1(bool);
+//        rule.rule1();
+//        rule.rule2();
+//        rule.rule3();
+//        rule.rule4();
+//        rule.rule5();
+//
+//        List<WeightAverage> listWA = new ArrayList<>();
+//        List<Double> list1 = rule.getRule();
+//        List<Double> list2 = rule.getValueOutput();
+//        for (int i = 0; i < list1.size(); i++) {
+//            if (list1.get(i) != 0) {
+//
+//                System.out.print(i + ":" + list1.get(i));
+//                System.out.print(" | " + list2.get(i));
+//                System.out.println();
+////                
+//                WeightAverage wa = new WeightAverage();
+//                wa.setKode("R" + (i + 1));
+//                wa.setPredikatAturan(list1.get(i));
+//                wa.setNilaiOutput(list2.get(i));
+//                wa.setRule("RULE " + (i + 1));
+//                listWA.add(wa);
+//            }
+//        }
+//
+//        Defuzzyfikasi d = new Defuzzyfikasi();
+//        d.calcWeightAverage(list1, list2);
+//
+//        System.out.println("x : " + listWA.size());
+//        System.out.println("WA : " + d.getWeightAverage());
     }
 
     private double weightAverage = 0;

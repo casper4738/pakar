@@ -57,7 +57,7 @@ public class TableRender1 extends DefaultTableRenderer {
             panel.add(textField1);
             panel.add(textField2);
             panel.add(textField3);
-            table.setRowHeight(75);
+            table.setRowHeight(row, 75);
             return panel;
         } else if (string.length - 1 == 4) {
             JPanel panel = new JPanel(new java.awt.GridLayout(4, 0));
@@ -65,7 +65,7 @@ public class TableRender1 extends DefaultTableRenderer {
             panel.add(textField2);
             panel.add(textField3);
             panel.add(textField4);
-            table.setRowHeight(100);
+            table.setRowHeight(row, 100);
             return panel;
         } else if (string.length - 1 == 5) {
             JPanel panel = new JPanel(new java.awt.GridLayout(5, 0));
@@ -74,7 +74,7 @@ public class TableRender1 extends DefaultTableRenderer {
             panel.add(textField3);
             panel.add(textField4);
             panel.add(textField5);
-            table.setRowHeight(125);
+            table.setRowHeight(row, 125);
             return panel;
         } else {
             JPanel panel = new JPanel(new java.awt.GridLayout(6, 0));
@@ -84,7 +84,7 @@ public class TableRender1 extends DefaultTableRenderer {
             panel.add(textField4);
             panel.add(textField5);
             panel.add(textField6);
-            table.setRowHeight(150);
+            table.setRowHeight(row, 150);
             return panel;
         }
 

@@ -2,8 +2,9 @@
  * Netbeans 8.0 
  * JDK 1.7  
  */
-package sistem.pakar.sugeno.inferensi;
 
+
+import sistem.pakar.sugeno.inferensi.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +20,11 @@ public class Rule {
     private double[][] listGejala4;
     private double[][] listGejala5;
     
+    private boolean [] listGejalaBool1;
+    private boolean [] listGejalaBool2;
+    private boolean [] listGejalaBool3;
+    private boolean [] listGejalaBool4;
+    private boolean [] listGejalaBool5;
     
     private ArrayList<Double> rule;
     private ArrayList<Double> valueOutput;
@@ -33,6 +39,11 @@ public class Rule {
         listGejala4 = new double[5][3];
         listGejala5 = new double[5][3];
         
+        listGejalaBool1 = new boolean[5];
+        listGejalaBool2 = new boolean[5];
+        listGejalaBool3 = new boolean[4];
+        listGejalaBool4 = new boolean[3];
+        listGejalaBool5 = new boolean[6];
     }
 
     public void rule1() {
@@ -1389,40 +1400,141 @@ public class Rule {
     }
 
     private double minValue1(double value1, double value2, double value3, double value4, double value5) {
-        double value = Math.min(value1, value2);
-        value = Math.min(value, value3);
-        value = Math.min(value, value4);
-        value = Math.min(value, value5);
+        double value = 0;
+        ArrayList<Double> list = new ArrayList<>();
+        if (listGejalaBool1[0]) {
+            list.add(value1);
+        }
+        if (listGejalaBool1[1]) {
+            list.add(value2);
+        }
+        if (listGejalaBool1[2]) {
+            list.add(value3);
+        }
+        if (listGejalaBool1[3]) {
+            list.add(value4);
+        }
+        if (listGejalaBool1[4]) {
+            list.add(value5);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i; j < list.size(); j++) {
+                if (list.get(i) >= list.get(j)) {
+                    value = list.get(j);
+                }
+            }
+        }
         return value;
     }
 
     private double minValue2(double value1, double value2, double value3, double value4, double value5) {
-       double value = Math.min(value1, value2);
-        value = Math.min(value, value3);
-        value = Math.min(value, value4);
-        value = Math.min(value, value5);
+        double value = 0;
+        ArrayList<Double> list = new ArrayList<>();
+        if (listGejalaBool2[0]) {
+            list.add(value1);
+        }
+        if (listGejalaBool2[1]) {
+            list.add(value2);
+        }
+        if (listGejalaBool2[2]) {
+            list.add(value3);
+        }
+        if (listGejalaBool2[3]) {
+            list.add(value4);
+        }
+        if (listGejalaBool2[4]) {
+            list.add(value5);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i; j < list.size(); j++) {
+                if (list.get(i) >= list.get(j)) {
+                    value = list.get(j);
+                }
+            }
+        }
         return value;
     }
 
     private double minValue3(double value1, double value2, double value3, double value4) {
-        double value = Math.min(value1, value2);
-        value = Math.min(value, value3);
-        value = Math.min(value, value4);
+        double value = 0;
+        ArrayList<Double> list = new ArrayList<>();
+        if (listGejalaBool3[0]) {
+            list.add(value1);
+        }
+        if (listGejalaBool3[1]) {
+            list.add(value2);
+        }
+        if (listGejalaBool3[2]) {
+            list.add(value3);
+        }
+        if (listGejalaBool3[3]) {
+            list.add(value4);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i; j < list.size(); j++) {
+                if (list.get(i) >= list.get(j)) {
+                    value = list.get(j);
+                }
+            }
+        }
         return value;
     }
 
     private double minValue4(double value1, double value2, double value3) {
-        double value = Math.min(value1, value2);
-        value = Math.min(value, value3);
+        double value = 0;
+        ArrayList<Double> list = new ArrayList<>();
+        if (listGejalaBool4[0]) {
+            list.add(value1);
+        }
+        if (listGejalaBool4[1]) {
+            list.add(value2);
+        }
+        if (listGejalaBool4[2]) {
+            list.add(value3);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i; j < list.size(); j++) {
+                if (list.get(i) >= list.get(j)) {
+                    value = list.get(j);
+                }
+            }
+        }
         return value;
     }
 
     private double minValue5(double value1, double value2, double value3, double value4, double value5, double value6) {
-        double value = Math.min(value1, value2);
-        value = Math.min(value, value3);
-        value = Math.min(value, value4);
-        value = Math.min(value, value5);
-        value = Math.min(value, value6);
+        double value = 0;
+        ArrayList<Double> list = new ArrayList<>();
+        if (listGejalaBool5[0]) {
+            list.add(value1);
+        }
+        if (listGejalaBool5[1]) {
+            list.add(value2);
+        }
+        if (listGejalaBool5[2]) {
+            list.add(value3);
+        }
+        if (listGejalaBool5[3]) {
+            list.add(value4);
+        }
+        if (listGejalaBool5[4]) {
+            list.add(value5);
+        }
+        if (listGejalaBool5[5]) {
+            list.add(value6);
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = i; j < list.size(); j++) {
+                if (list.get(i) >= list.get(j)) {
+                    value = list.get(j);
+                }
+            }
+        }
         return value;
     }
 
@@ -1444,6 +1556,26 @@ public class Rule {
 
     public void setListGejala5(double[][] listGejala5) {
         this.listGejala5 = listGejala5;
+    }
+
+    public void setListGejalaBool1(boolean[] listGejalaBool1) {
+        this.listGejalaBool1 = listGejalaBool1;
+    }
+
+    public void setListGejalaBool2(boolean[] listGejalaBool2) {
+        this.listGejalaBool2 = listGejalaBool2;
+    }
+
+    public void setListGejalaBool3(boolean[] listGejalaBool3) {
+        this.listGejalaBool3 = listGejalaBool3;
+    }
+
+    public void setListGejalaBool4(boolean[] listGejalaBool4) {
+        this.listGejalaBool4 = listGejalaBool4;
+    }
+
+    public void setListGejalaBool5(boolean[] listGejalaBool5) {
+        this.listGejalaBool5 = listGejalaBool5;
     }
 
     public ArrayList<Double> getRule() {

@@ -4,7 +4,6 @@
  */
 package sistem.pakar.view;
 
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -48,11 +47,11 @@ public class PanelInferensi extends javax.swing.JPanel {
         table.setRowHeight(75);
         new swingx.component.table.renderer.TableColumnSizeRenderer().setRenderSizeColumn(table, JTable.AUTO_RESIZE_OFF);
 
-        table.getColumnModel().getColumn(1).setCellRenderer(new TableRender1());
         table.getColumnModel().getColumn(0).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(2).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(3).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(4).setCellRenderer(new TableCellAlignmentRenderer(JLabel.CENTER));
+        table.getColumnModel().getColumn(1).setCellRenderer(new TableRender1());
         table.getColumnModel().getColumn(1).setPreferredWidth(400);
 
     }

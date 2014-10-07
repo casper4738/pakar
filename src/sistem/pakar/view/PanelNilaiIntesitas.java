@@ -31,6 +31,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
      */
     private TableModelIntensitas tableModel;
     private PanelDiagnosa panelDiagnosa;
+    private List<Gejala> arrayList;
 
     public PanelNilaiIntesitas(PanelDiagnosa panelDiagnosa) {
         initComponents();
@@ -40,13 +41,29 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
     }
 
     public void setData(List<Gejala> vlist) {
+        arrayList = new ArrayList<>();
+//        arrayList.addAll(vlist);
         List<Gejala> list = new ArrayList<>();
-        for (Gejala gejala : vlist) {
-            if (gejala.isSelected()) {
-                list.add(gejala);
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Gejala e : vlist) {
+            if (e.isSelected()) {
+                list.add(e);
+                stringBuilder.append(e.getKodeGangguan());
+                stringBuilder.append(";");
             }
         }
 
+        for (Gejala e : vlist) {
+            String[] stringArray = stringBuilder.toString().split(";");
+            for (String string : stringArray) {
+                if (string.equals(e.getKodeGangguan())) {
+                    e.setValue(1);
+                    arrayList.add(e);
+                    break;
+                }
+            }
+        }
+        
         tableModel.setList(list);
         table.setModel(tableModel);
 
@@ -57,15 +74,6 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         table.getColumnModel().getColumn(0).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(1).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.CENTER));
         table.getColumnModel().getColumn(2).setCellRenderer(new TableCellColorAlignmentRenderer(JLabel.LEFT));
-//        table.getColumnModel().getColumn(0).setCellRenderer(new DefaultTableCellRenderer() {
-//
-//            @Override
-//            public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-//                JComboBox comboBox = new JComboBox(new Object[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10});
-//                comboBox.setSelectedItem(value);
-//                return comboBox;
-//            }
-//        });
         table.getColumnModel().getColumn(0).setCellEditor(
                 new DefaultCellEditor(new JComboBox(new Object[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}))
         );
@@ -163,7 +171,8 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void buttonProsesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonProsesActionPerformed
-        List<Fuzzyfikasi> listFuzzyfikasis = new ArrayList<>();
+        List<Fuzzyfikasi> listFuzzyfikasis1 = new ArrayList<>();
+        List<Fuzzyfikasi> listFuzzyfikasis2 = new ArrayList<>();
 
         double[][] listGejala1 = new double[5][3];
         double[][] listGejala2 = new double[5][3];
@@ -171,13 +180,15 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         double[][] listGejala4 = new double[3][3];
         double[][] listGejala5 = new double[6][3];
 
-        boolean[] listBool1 = {false, false, false, false, false};
-        boolean[] listBool2 = {false, false, false, false, false};
-        boolean[] listBool3 = {false, false, false, false};
-        boolean[] listBool4 = {false, false, false};
-        boolean[] listBool5 = {false, false, false, false, false, false};
+        for (Gejala e : arrayList) {
+            for (Gejala ve : tableModel.getList()) {
+                if (ve.getKode().equals(e.getKode())) {
+                    e.setValue(ve.getValue());
+                }
+            }
+        }
 
-        for (Gejala e : tableModel.getList()) {
+        for (Gejala e : arrayList) {
             Fuzzyfikasi keanggotaan = new Fuzzyfikasi();
             keanggotaan.setKode(e.getKode());
             keanggotaan.setGejala(e.getGejala());
@@ -188,106 +199,42 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
             keanggotaan.setSelected(e.isSelected());
 
             keanggotaan.setJarang(IntensitasGejala.getKeanggotaanJarang(e.getValue()));
-            keanggotaan.setSedang(IntensitasGejala.getKeanggotaanSering(e.getValue()));
-            keanggotaan.setSering(IntensitasGejala.getKeanggotaanHampirSelalu(e.getValue()));
-            listFuzzyfikasis.add(keanggotaan);
+            keanggotaan.setSedang(IntensitasGejala.getKeanggotaanSedang(e.getValue()));
+            keanggotaan.setSering(IntensitasGejala.getKeanggotaanSering(e.getValue()));
+            listFuzzyfikasis1.add(keanggotaan);
+
+            if (e.isSelected()) {
+                listFuzzyfikasis2.add(keanggotaan);
+            }
         }
 
-        for (Fuzzyfikasi e : listFuzzyfikasis) {
+        for (Fuzzyfikasi e : listFuzzyfikasis1) {
             switch (e.getKodeGangguan()) {
                 case "P1":
                     listGejala1[e.getNumber()][0] = e.getJarang();
                     listGejala1[e.getNumber()][1] = e.getSedang();
                     listGejala1[e.getNumber()][2] = e.getSering();
-                    if (e.getKode().equals("G01")) {
-                        listBool1[0] = true;
-                    }
-                    if (e.getKode().equals("G02")) {
-                        listBool1[1] = true;
-                    }
-                    if (e.getKode().equals("G03")) {
-                        listBool1[2] = true;
-                    }
-                    if (e.getKode().equals("G04")) {
-                        listBool1[3] = true;
-                    }
-                    if (e.getKode().equals("G05")) {
-                        listBool1[4] = true;
-                    }
                     break;
                 case "P2":
                     listGejala2[e.getNumber()][0] = e.getJarang();
                     listGejala2[e.getNumber()][1] = e.getSedang();
                     listGejala2[e.getNumber()][2] = e.getSering();
-                    if (e.getKode().equals("G06")) {
-                        listBool2[0] = true;
-                    }
-                    if (e.getKode().equals("G07")) {
-                        listBool2[1] = true;
-                    }
-                    if (e.getKode().equals("G08")) {
-                        listBool2[2] = true;
-                    }
-                    if (e.getKode().equals("G09")) {
-                        listBool2[3] = true;
-                    }
-                    if (e.getKode().equals("G10")) {
-                        listBool2[4] = true;
-                    }
                     break;
                 case "P3":
                     listGejala3[e.getNumber()][0] = e.getJarang();
                     listGejala3[e.getNumber()][1] = e.getSedang();
                     listGejala3[e.getNumber()][2] = e.getSering();
-                    if (e.getKode().equals("G11")) {
-                        listBool3[0] = true;
-                    }
-                    if (e.getKode().equals("G12")) {
-                        listBool3[1] = true;
-                    }
-                    if (e.getKode().equals("G13")) {
-                        listBool3[2] = true;
-                    }
-                    if (e.getKode().equals("G14")) {
-                        listBool3[3] = true;
-                    }
                     break;
                 case "P4":
                     listGejala4[e.getNumber()][0] = e.getJarang();
                     listGejala4[e.getNumber()][1] = e.getSedang();
                     listGejala4[e.getNumber()][2] = e.getSering();
-                    if (e.getKode().equals("G15")) {
-                        listBool4[0] = true;
-                    }
-                    if (e.getKode().equals("G16")) {
-                        listBool4[1] = true;
-                    }
-                    if (e.getKode().equals("G17")) {
-                        listBool4[2] = true;
-                    }
+
                     break;
                 case "P5":
                     listGejala5[e.getNumber()][0] = e.getJarang();
                     listGejala5[e.getNumber()][1] = e.getSedang();
                     listGejala5[e.getNumber()][2] = e.getSering();
-                    if (e.getKode().equals("G18")) {
-                        listBool5[0] = true;
-                    }
-                    if (e.getKode().equals("G19")) {
-                        listBool5[1] = true;
-                    }
-                    if (e.getKode().equals("G20")) {
-                        listBool5[2] = true;
-                    }
-                    if (e.getKode().equals("G21")) {
-                        listBool5[3] = true;
-                    }
-                    if (e.getKode().equals("G22")) {
-                        listBool5[4] = true;
-                    }
-                    if (e.getKode().equals("G23")) {
-                        listBool5[5] = true;
-                    }
                     break;
             }
         }
@@ -298,12 +245,6 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
         rule.setListGejala3(listGejala3);
         rule.setListGejala4(listGejala4);
         rule.setListGejala5(listGejala5);
-
-        rule.setListGejalaBool1(listBool1);
-        rule.setListGejalaBool2(listBool2);
-        rule.setListGejalaBool3(listBool3);
-        rule.setListGejalaBool4(listBool4);
-        rule.setListGejalaBool5(listBool5);
 
         Perilaku perilaku = new Perilaku();
         perilaku.perilaku1();
@@ -428,7 +369,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
 
         panelDiagnosa.showPanel("card4");
         panelDiagnosa.showMenu("menu3");
-        panelDiagnosa.getPanelFuzzyfikazi().setData(listFuzzyfikasis);
+        panelDiagnosa.getPanelFuzzyfikazi().setData(listFuzzyfikasis2);
         panelDiagnosa.getPanelInferensi().setData(list);
         panelDiagnosa.getPanelDeffuzyfikasi().setData(wa);
         panelDiagnosa.getPanelHasil().setHasilDiagnosa(wa);
@@ -437,7 +378,7 @@ public class PanelNilaiIntesitas extends javax.swing.JPanel {
     private void buttonResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonResetActionPerformed
         for (int i = 0; i < tableModel.getRowCount(); i++) {
             Gejala e = tableModel.get(i);
-            e.setSelected(false);
+            e.setValue(1);
             tableModel.update(i, e);
         }
     }//GEN-LAST:event_buttonResetActionPerformed

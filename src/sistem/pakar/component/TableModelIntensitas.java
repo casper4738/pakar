@@ -79,9 +79,9 @@ public class TableModelIntensitas extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0: {
-                if (list.get(rowIndex).getValue() == 0) {
-                    list.get(rowIndex).setValue(1);
-                } 
+//                if (list.get(rowIndex).getValue() == 0) {
+//                    list.get(rowIndex).setValue(1);
+//                }
                 return list.get(rowIndex).getValue();
             }
             case 1:

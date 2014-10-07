@@ -36,6 +36,7 @@ public class Saran {
             + "tempat bermain dan penanganan behavior. \n\n"
             + "Untuk menghindari kecenderungan perilaku abnormal bertambah parah, "
             + "konsultasikan masalah anak pada Psikolog khusus perkembangan psikologis anak."},
+        
         {"1. Usahakan agar benar-benar aktif dalam mendampinginya dari waktu ke waktu.\n"
             + "2. Memberikan dorongan sedemikian rupa untuk mengembalikan kepercayaan dirinya. \n"
             + "3. Buatlah semenarik mungkin ketika mengajarinya membaca. \n"

@@ -79,7 +79,7 @@ public class TableModelGejala extends AbstractTableModel {
     public Object getValueAt(int rowIndex, int columnIndex) {
         switch (columnIndex) {
             case 0: 
-                //list.get(rowIndex).setSelected(true);
+//                list.get(rowIndex).setSelected(true);
                 return list.get(rowIndex).isSelected();
             case 1:
                 return list.get(rowIndex).getKode();
